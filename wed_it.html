@@ -1,0 +1,2394 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>STUDENTS PORTAL</title>
+      <link rel="icon" href="https://i.ibb.co/wg3HxkZ/books.png" type="image/jpg">
+      <style>
+         body {
+         font-family: 'Arial', sans-serif;
+         background-color: #f4f4f4;
+         color: #333;
+         margin: 0;
+         padding: 0;
+         display: grid;
+         justify-content: center;
+         align-items: center;
+         height: 100vh;
+         }
+         .container {
+         position: relative; 
+         text-align: center;
+         background: linear-gradient(to bottom, #99ccff 20%, #ff99cc 100%);
+         padding: 20px;
+         border-radius: 12px;
+         box-shadow: 0 0 20px 5px #99ccff,0 0 40px 10px rgb(255, 255, 255),0 0 60px 15px #ff99cc;
+         }
+         #resettableImage {
+         position: absolute; 
+         bottom: 10px; 
+         right: 10px; 
+         max-width: 50px;
+         cursor: pointer;
+         }
+         .wave-group {
+         position: relative;
+         margin: 0 auto;
+         width: fit-content; 
+         }
+         .wave-group .input {
+         font-size: 16px;
+         padding: 10px 10px 10px 5px;
+         display: block;
+         width: 200px;
+         border: none;
+         border-bottom: 1px solid #64818a;
+         background: transparent;
+         }
+         .wave-group .input:focus {
+         outline: none;
+         }
+         .wave-group .label {
+         color: #000000;
+         font-size: 18px;
+         font-weight: normal;
+         position: absolute;
+         pointer-events: none;
+         left: 5px;
+         top: 10px;
+         display: flex;
+         }
+         .wave-group .label-char {
+         font-family:'Times New Roman', Times, serif; 
+         transition: 0.2s ease all;
+         transition-delay: calc(var(--index) * .05s);
+         }
+         .wave-group .input:focus ~ label .label-char,
+         .wave-group .input:valid ~ label .label-char {
+         transform: translateY(-30px);
+         font-size: 14px;
+         color: #000000;
+         }
+         .wave-group .bar {
+         position: relative;
+         display: block;
+         width: 200px;
+         }
+         .wave-group .bar:before,.wave-group .bar:after {
+         content: '';
+         height: 2px;
+         width: 0;
+         bottom: 1px;
+         position: absolute;
+         background: linear-gradient(to right, #116399 , #38caef );
+         transition: 0.2s ease all;
+         -moz-transition: 0.2s ease all;
+         -webkit-transition: 0.2s ease all;
+         }
+         .wave-group .bar:before {
+         left: 50%;
+         }
+         .wave-group .bar:after {
+         right: 50%;
+         }
+         .wave-group .input:focus ~ .bar:before,
+         .wave-group .input:focus ~ .bar:after {
+         width: 50%;
+         }
+         label {
+         font-size: 18px;
+         }
+         #studentId {
+         font-size: 16px;
+         padding: 8px;
+         margin: 10px 0;
+         border: 1px solid #ddd;
+         border-radius: 4px;
+         }
+         #photo-container {
+         margin-top: 20px;
+         }
+         img {
+         max-width: 100%;
+         max-height: 300px; 
+         margin: 0 auto;
+         display: block;
+         border-radius: 8px;
+         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+         transition: transform 0.3s ease-in-out;
+         }
+         img:hover {
+         transform: scale(1.065);
+         cursor: crosshair;
+         }
+         .button {
+         position: relative;
+         overflow: hidden;
+         height: 2.3rem;
+         padding: 0 2rem;
+         border-radius: 1.5rem;
+         background: #be97b5;
+         background-size: 400%;
+         color: #fff;
+         border: 2px solid #ffd0ed; 
+         cursor: pointer;
+         display: flex;
+         justify-content: space-between;
+         }
+         .button:hover::before {
+         transform: scaleX(1);
+         }
+         .button-content {
+         position: relative;
+         z-index: 1;
+         }
+         .button::before {
+         content: "";
+         position: absolute;
+         top: 0;
+         left: 0;
+         transform: scaleX(0);
+         transform-origin: 0 50%;
+         width: 100%;
+         height: inherit;
+         border-radius: inherit;
+         background: linear-gradient(82.3deg, rgb(89, 190, 230) 10.8%, rgb(209, 176, 231) 94.3%);
+         transition: all 0.475s;
+         }
+         input[type="text"] {
+         padding: 8px;
+         font-size: 16px;
+         }
+         #studentName {
+         font-size: 22px;
+         margin: 10px 0;
+         }
+      </style>
+      <script>
+         document.addEventListener('DOMContentLoaded', function () {
+           var image = document.getElementById('resettableImage');
+           image.addEventListener('click', function () {
+             window.location.reload();
+           });
+         });
+      </script>
+   </head>
+   <body>
+      <div class="container">
+         <img src="https://studentscorner.vardhaman.org/images/name.jpg" width="340" height="25">
+         <br>
+         <img id="resettableImage" src="https://i.ibb.co/pjr8Lhq/IMG-20231101-103458-removebg-preview.png" alt="Reset Website">
+         <br>
+         <div class="wave-group">
+            <input required="" type="text" class="input" id="studentId">
+            <span class="bar"></span>
+            <label class="label">
+            <span class="label-char" style="--index: 0">E</span>
+            <span class="label-char" style="--index: 1">N</span>
+            <span class="label-char" style="--index: 2">T</span>
+            <span class="label-char" style="--index: 3">E</span>
+            <span class="label-char" style="--index: 4">R R</span>
+            <span class="label-char" style="--index: 5">O</span>
+            <span class="label-char" style="--index: 6">L</span>
+            <span class="label-char" style="--index: 7">L N</span>
+            <span class="label-char" style="--index: 8">O :</span>
+            </label>
+         </div>
+         <br>
+         <br>
+         <button class="button" onclick="displayImage(document.getElementById('studentId').value)">
+         <span class="button-content">Image</span>
+         </button>
+         <button class="button" onclick="displayStudentDetails()">
+         <span class="button-content">Details</span>
+         </button>
+         <br></br>
+         <button class="button" onclick="displayResults(document.getElementById('studentId').value)">
+         <span class="button-content">Student Results</span>
+         </button>
+         <div id="photo-container"></div>
+         <div id="studentDetails"></div>
+         <table id="dataTable" style="display: none;">
+            <thead>
+               <tr>
+                  <th style="width: 10%;">ROLL NO.</th>
+                  <th style="width: 20%;">NAME OF THE STUDENT</th>
+                  <th style="width: 15%;">STUDENT PHONE NUMBER</th>
+                  <th style="width: 20%;">FATHER NAME</th>
+                  <th style="width: 15%;">PARENT PHONE NUMBER</th>
+                  <th style="width: 10%;">SEM-1 CGPA</th>
+                  <th style="width: 10%;">SEM-2 CGPA</th>
+                  <th style="width: 10%;">SEM-3 CGPA</th>
+               </tr>
+            </thead>
+            <tbody>
+               <tr>
+                  <td>ROLL NO.</td>
+                  <td>NAME OF THE STUDENT</td>
+                  <td>STUDENT PHONE NUMBER </td>
+                  <td>FATHER NAME</td>
+                  <td>PARENT PHONE NUMBER </td>
+                  <td>SEM-1 CGPA</td>
+                  <td>SEM-2 CGPA</td>
+               </tr>
+               <tr>
+                  <td>22881A1201</td>
+                  <td>ADARI KARTHIK</td>
+                  <td>null</td>
+                  <td>ADARI SRINIVAS</td>
+                  <td>null</td>
+                  <td>7.4</td>
+                  <td>6.6</td>
+                  <td>8.3</td>
+               </tr>
+               <tr>
+                  <td>22881A1202</td>
+                  <td>AKULA REVANTH</td>
+                  <td>null</td>
+                  <td>AKULA MAHESH</td>
+                  <td>null</td>
+                  <td>8</td>
+                  <td>7.6</td>
+                  <td>8.7</td>
+               </tr>
+               <tr>
+                  <td>22881A1203</td>
+                  <td>ANAPARTHI SAI SAMPATH</td>
+                  <td>null</td>
+                  <td>ANAPARTHI RAVI SHANKAR</td>
+                  <td>null</td>
+                  <td>8.35</td>
+                  <td>9.45</td>
+                  <td>9.5</td>
+               </tr>
+               <tr>
+                  <td>22881A1204</td>
+                  <td>ARKATALA SAI TEJA</td>
+                  <td>null</td>
+                  <td>ARKATALA VEERAPPA</td>
+                  <td>null</td>
+                  <td>7.25</td>
+                  <td>6.75</td>
+                  <td>6.5</td>
+               </tr>
+               <tr>
+                  <td>22881A1205</td>
+                  <td>ARUKALA PRADEEP</td>
+                  <td>null</td>
+                  <td>ARUKALA RAM CHANDRAIAH</td>
+                  <td>null</td>
+                  <td>8.15</td>
+                  <td>7.55</td>
+                  <td>6.65</td>
+               </tr>
+               <tr>
+                  <td>22881A1206</td>
+                  <td>ATAVALI NAMASWITHA</td>
+                  <td>null</td>
+                  <td>ATAVALI MANOHAR REDDY</td>
+                  <td>null</td>
+                  <td>9.8</td>
+                  <td>9.75</td>
+                  <td>9.8</td>
+               </tr>
+               <tr>
+                  <td>22881A1207</td>
+                  <td>BANOTH NANDHINI</td>
+                  <td>null</td>
+                  <td>BANOTH DHANJYA</td>
+                  <td>null</td>
+                  <td>8</td>
+                  <td>7.45</td>
+                  <td>7.45</td>
+               </tr>
+               <tr>
+                  <td>22881A1208</td>
+                  <td>BODI MAHESHWAR REDDY</td>
+                  <td>null</td>
+                  <td>BODI BICHI REDDY</td>
+                  <td>null</td>
+                  <td>7.3</td>
+                  <td>6.7</td>
+                  <td>6.95</td>
+               </tr>
+               <tr>
+                  <td>22881A1209</td>
+                  <td>CH SHASHANK YADAV</td>
+                  <td>null</td>
+                  <td>CH SEKHAR YADAV</td>
+                  <td>null</td>
+                  <td>7.55</td>
+                  <td>6.3</td>
+                  <td>6.9</td>
+               </tr>
+               <tr>
+                  <td>22881A1210</td>
+                  <td>CHINNAGULA AKHIL</td>
+                  <td>null</td>
+                  <td>CHINNAGULA ASHIRVADAM</td>
+                  <td>null</td>
+                  <td>7.75</td>
+                  <td>8.8</td>
+                  <td>8.15</td>
+               </tr>
+               <tr>
+                  <td>22881A1211</td>
+                  <td>DASARI RAJU</td>
+                  <td>null</td>
+                  <td>DASARI SRINIVAS</td>
+                  <td>null</td>
+                  <td>8.7</td>
+                  <td>9.45</td>
+                  <td>9.05</td>
+               </tr>
+               <tr>
+                  <td>22881A1212</td>
+                  <td>GANGAPURAM DHANASREE</td>
+                  <td>null</td>
+                  <td>GANGAPURAM SUDHAKAR</td>
+                  <td>null</td>
+                  <td>8.9</td>
+                  <td>9.5</td>
+                  <td>9.55</td>
+               </tr>
+               <tr>
+                  <td>22881A1213</td>
+                  <td>GANGULA SAI SUDHA</td>
+                  <td>null</td>
+                  <td>GANGULA PRATHAP REDDY</td>
+                  <td>null</td>
+                  <td>9.25</td>
+                  <td>9.65</td>
+                  <td>9.45</td>
+               </tr>
+               <tr>
+                  <td>22881A1214</td>
+                  <td>GEDIPUDI ABIJITH</td>
+                  <td>null</td>
+                  <td>GEDIPUDI RAMESH</td>
+                  <td>null</td>
+                  <td>8.55</td>
+                  <td>8.55</td>
+                  <td>8.6</td>
+               </tr>
+               <tr>
+                  <td>22881A1215</td>
+                  <td>GOTTUMUKALA GAYATHRI</td>
+                  <td>null</td>
+                  <td>GOTTUMUKALA SRINIVASA VARMA</td>
+                  <td>null</td>
+                  <td>9.6</td>
+                  <td>9.6</td>
+                  <td>9.65</td>
+               </tr>
+               <tr>
+                  <td>22881A1216</td>
+                  <td>GUDUGUNTLA PREETHIKA</td>
+                  <td>null</td>
+                  <td>G SATYANARAYANA</td>
+                  <td>null</td>
+                  <td>9.35</td>
+                  <td>9.6</td>
+                  <td>9</td>
+               </tr>
+               <tr>
+                  <td>22881A1217</td>
+                  <td>GUMMAKONDA LOKESH REDDY</td>
+                  <td>null</td>
+                  <td>GUMMAKONDA SURENDER REDDY</td>
+                  <td>null</td>
+                  <td>2.4</td>
+                  <td>2.1</td>
+                  <td>1.35</td>
+               </tr>
+               <tr>
+                  <td>22881A1218</td>
+                  <td>HAFSA SUNDOOS</td>
+                  <td>null</td>
+                  <td>MOHAMMED ABDUL KHALEED</td>
+                  <td>null</td>
+                  <td>9.75</td>
+                  <td>9.25</td>
+                  <td>9.05</td>
+               </tr>
+               <tr>
+                  <td>22881A1219</td>
+                  <td>JATOTH RAHUL</td>
+                  <td>null</td>
+                  <td>JATOTH RAVI</td>
+                  <td>null</td>
+                  <td>7</td>
+                  <td>7.15</td>
+                  <td>7.5</td>
+               </tr>
+               <tr>
+                  <td>22881A1220</td>
+                  <td>JELLA RAKESH</td>
+                  <td>null</td>
+                  <td>JELLA BALAKRISHNA</td>
+                  <td>null</td>
+                  <td>9.05</td>
+                  <td>9.2</td>
+                  <td>8.5</td>
+               </tr>
+               <tr>
+                  <td>22881A1221</td>
+                  <td>JUPALLY SIRI</td>
+                  <td>null</td>
+                  <td>JUPALLY PRASADA RAO</td>
+                  <td>null</td>
+                  <td>9.85</td>
+                  <td>9.95</td>
+                  <td>9.65</td>
+               </tr>
+               <tr>
+                  <td>22881A1222</td>
+                  <td>JYOTHSNA USHANOLLA</td>
+                  <td>null</td>
+                  <td>LINGAM USHANOLLA</td>
+                  <td>null</td>
+                  <td>7.8</td>
+                  <td>8.15</td>
+                  <td>7.15</td>
+               </tr>
+               <tr>
+                  <td>22881A1223</td>
+                  <td>KAMSANI AKASH</td>
+                  <td>null</td>
+                  <td>KAMSANI HANUMANTHU</td>
+                  <td>null</td>
+                  <td>7.1</td>
+                  <td>5.95</td>
+                  <td>6.35</td>
+               </tr>
+               <tr>
+                  <td>22881A1224</td>
+                  <td>KATKAM HIMABINDU</td>
+                  <td>null</td>
+                  <td>KATKAM RAMAKRISHNA</td>
+                  <td>null</td>
+                  <td>9.25</td>
+                  <td>8.75</td>
+                  <td>8.35</td>
+               </tr>
+               <tr>
+                  <td>22881A1225</td>
+                  <td>KELVIN PATEL</td>
+                  <td>null</td>
+                  <td>JAYANTILAL PATEL</td>
+                  <td>null</td>
+                  <td>9.35</td>
+                  <td>8.6</td>
+                  <td>8.6</td>
+               </tr>
+               <tr>
+                  <td>22881A1226</td>
+                  <td>KONDA NIKHIL</td>
+                  <td>null</td>
+                  <td>KONDA RAVINDER</td>
+                  <td>null</td>
+                  <td>9.2</td>
+                  <td>9.5</td>
+                  <td>9.2</td>
+               </tr>
+               <tr>
+                  <td>22881A1227</td>
+                  <td>KOTHA HARSH VARDHAN</td>
+                  <td>null</td>
+                  <td>KOTHA BALAJI</td>
+                  <td>null</td>
+                  <td>6.65</td>
+                  <td>6.65</td>
+                  <td>4.95</td>
+               </tr>
+               <tr>
+                  <td>22881A1228</td>
+                  <td>MALLEPULA SAI TEJA GOUD</td>
+                  <td>null</td>
+                  <td>MALLEPULA NARENDER GOUD</td>
+                  <td>null</td>
+                  <td>9.45</td>
+                  <td>9.6</td>
+                  <td>9.15</td>
+               </tr>
+               <tr>
+                  <td>22881A1229</td>
+                  <td>MANCHANPALLY ARUN KUMAR</td>
+                  <td>null</td>
+                  <td>MANCHANPALLY MALLESHAM</td>
+                  <td>null</td>
+                  <td>8.4</td>
+                  <td>8.35</td>
+                  <td>8.65</td>
+               </tr>
+               <tr>
+                  <td>22881A1230</td>
+                  <td>MANDALA SOHAN REDDY</td>
+                  <td>null</td>
+                  <td>MANDALA KESHAVA REDDY</td>
+                  <td>null</td>
+                  <td>6.6</td>
+                  <td>6.65</td>
+                  <td>6.05</td>
+               </tr>
+               <tr>
+                  <td>22881A1231</td>
+                  <td>MANGALI SHARATH CHANDRA</td>
+                  <td>null</td>
+                  <td>ASHWINI SUJATHA</td>
+                  <td>null</td>
+                  <td>9.35</td>
+                  <td>9.6</td>
+                  <td>8.85</td>
+               </tr>
+               <tr>
+                  <td>22881A1232</td>
+                  <td>MANGLARAM ASHER</td>
+                  <td>null</td>
+                  <td>MANGLARAM SAYANNA</td>
+                  <td>null</td>
+                  <td>7.3</td>
+                  <td>7.15</td>
+                  <td>7.4</td>
+               </tr>
+               <tr>
+                  <td>22881A1233</td>
+                  <td>MADISHETTY VIGNESH</td>
+                  <td>null</td>
+                  <td>MADISHETTY ASHOK KUMAR</td>
+                  <td>null</td>
+                  <td>7.65</td>
+                  <td>7.8</td>
+                  <td>7.85</td>
+               </tr>
+               <tr>
+                  <td>22881A1234</td>
+                  <td>MOHAMMAD AMAAN</td>
+                  <td>null</td>
+                  <td>MOHAMMAD KALEEM</td>
+                  <td>null</td>
+                  <td>6.75</td>
+                  <td>6.45</td>
+                  <td>6.55</td>
+               </tr>
+               <tr>
+                  <td>22881A1235</td>
+                  <td>MOHAMMAD AYAAN</td>
+                  <td>null</td>
+                  <td>MOHAMMAD RAJ MOHAMMAD</td>
+                  <td>null</td>
+                  <td>7.3</td>
+                  <td>6.5</td>
+                  <td>6.95</td>
+               </tr>
+               <tr>
+                  <td>22881A1236</td>
+                  <td>MORAMPUDI LOHITH CHOWDARY</td>
+                  <td>null</td>
+                  <td>MORAMPUDI RAJA GANESH</td>
+                  <td>null</td>
+                  <td>9.1</td>
+                  <td>8.45</td>
+                  <td>8.95</td>
+               </tr>
+               <tr>
+                  <td>22881A1237 </td>
+                  <td>NEERUDI UDAY KUMAR</td>
+                  <td>null</td>
+                  <td>NEERUDI PRAKASHAM</td>
+                  <td>null</td>
+                  <td>8.35</td>
+                  <td>8.55</td>
+                  <td>8.45</td>
+               </tr>
+               <tr>
+                  <td>22881A1238</td>
+                  <td>NUGURI ASHISH ARYAN</td>
+                  <td>null</td>
+                  <td>NUGURI SUDHEER KUMAR</td>
+                  <td>null</td>
+                  <td>8</td>
+                  <td>7.7</td>
+                  <td>3.5</td>
+               </tr>
+               <tr>
+                  <td>22881A1239</td>
+                  <td>PADAMATI HAMSHIKA REDDY</td>
+                  <td>null</td>
+                  <td>PADAMATI SREEDHAR REDDY</td>
+                  <td>null</td>
+                  <td>4.5</td>
+                  <td>5.7</td>
+                  <td>6.7</td>
+               </tr>
+               <tr>
+                  <td>22881A1240 </td>
+                  <td>PAKA SOWMYA</td>
+                  <td>null</td>
+                  <td>PAKA AVILAIAH</td>
+                  <td>null</td>
+                  <td>8.65</td>
+                  <td>8.8</td>
+                  <td>8.9</td>
+               </tr>
+               <tr>
+                  <td>22881A1241</td>
+                  <td>PAPASANI YASHWANTH REDDY</td>
+                  <td>null</td>
+                  <td>PAPASANI SUDHAKAR REDDY</td>
+                  <td>null</td>
+                  <td>3.35</td>
+                  <td>2.4</td>
+                  <td>5.5</td>
+               </tr>
+               <tr>
+                  <td>22881A1242</td>
+                  <td>PATLOLLA SRIJA REDDY</td>
+                  <td>null</td>
+                  <td>PATLOLLA MOHAN REDDY</td>
+                  <td>null</td>
+                  <td>9.55</td>
+                  <td>9.35</td>
+                  <td>9.05</td>
+               </tr>
+               <tr>
+                  <td>22881A1243</td>
+                  <td>PERUGU NIKHITHA</td>
+                  <td>null</td>
+                  <td>PERUGU BAPU REDDY</td>
+                  <td>null</td>
+                  <td>9.65</td>
+                  <td>9.55</td>
+                  <td>9.35</td>
+               </tr>
+               <tr>
+                  <td>22881A1244</td>
+                  <td>POLAKAMPALLI KUSHAL</td>
+                  <td>null</td>
+                  <td>POLAKAMPALLI SURESH KUMAR</td>
+                  <td>null</td>
+                  <td>6.85</td>
+                  <td>5.5</td>
+                  <td>4.7</td>
+               </tr>
+               <tr>
+                  <td>22881A1245</td>
+                  <td>RAJOLI MANOJ KUMAR REDDY</td>
+                  <td>null</td>
+                  <td>RAJOLI BAYAPU REDDY</td>
+                  <td>null</td>
+                  <td>8.8</td>
+                  <td>9.05</td>
+                  <td>8.6</td>
+               </tr>
+               <tr>
+                  <td>22881A1246</td>
+                  <td>RAKESH REDDY PATLOLLA</td>
+                  <td>null</td>
+                  <td>P SRINIVAS REDDY</td>
+                  <td>null</td>
+                  <td>7.4</td>
+                  <td>7.5</td>
+                  <td>7.5</td>
+               </tr>
+               <tr>
+                  <td>22881A1247</td>
+                  <td>RAMAVATH AKHILA</td>
+                  <td>null</td>
+                  <td>RAMAVATH MANGYA</td>
+                  <td>null</td>
+                  <td>7.4</td>
+                  <td>7.4</td>
+                  <td>7.8</td>
+               </tr>
+               <tr>
+                  <td>22881A1248</td>
+                  <td>SABBU JAGAN</td>
+                  <td>null</td>
+                  <td>SABBU BALAIAH</td>
+                  <td>null</td>
+                  <td>8.7</td>
+                  <td>8.7</td>
+                  <td>8.3</td>
+               </tr>
+               <tr>
+                  <td>22881A1249</td>
+                  <td>SALIVENDRI SRAVYA</td>
+                  <td>null</td>
+                  <td>SALIVENDRI VENKAT REDDY</td>
+                  <td>null</td>
+                  <td>8.65</td>
+                  <td>9.15</td>
+                  <td>8.4</td>
+               </tr>
+               <tr>
+                  <td>22881A1250</td>
+                  <td>SAMA RITHEESH REDDY</td>
+                  <td>null</td>
+                  <td>SAMA VIJAYAPAL REDDY</td>
+                  <td>null</td>
+                  <td>6.7</td>
+                  <td>6.45</td>
+                  <td>3.85</td>
+               </tr>
+               <tr>
+                  <td>22881A1251</td>
+                  <td>T KESHAV</td>
+                  <td>null</td>
+                  <td>S T RADHA KRISHNA</td>
+                  <td>null</td>
+                  <td>8.65</td>
+                  <td>8.35</td>
+                  <td>7.95</td>
+               </tr>
+               <tr>
+                  <td>22881A1252</td>
+                  <td>THARALA MALLISHWARI</td>
+                  <td>null</td>
+                  <td>THARALA SRINIVAS</td>
+                  <td>null</td>
+                  <td>7.5</td>
+                  <td>7.85</td>
+                  <td>7.65</td>
+               </tr>
+               <tr>
+                  <td>22881A1253</td>
+                  <td>THAVATI HARSHITH KUMAR</td>
+                  <td>null</td>
+                  <td>THAVITI NIRANJAN</td>
+                  <td>null</td>
+                  <td>8.5</td>
+                  <td>9.35</td>
+                  <td>8.3</td>
+               </tr>
+               <tr>
+                  <td>22881A1254</td>
+                  <td>THOKALA NIKHITHA</td>
+                  <td>null</td>
+                  <td>SRINIVAS</td>
+                  <td>null</td>
+                  <td>8.65</td>
+                  <td>9.7</td>
+                  <td>9.3</td>
+               </tr>
+               <tr>
+                  <td>22881A1255</td>
+                  <td>THOORPU SAI KIRAN REDDY(spot)</td>
+                  <td>null</td>
+                  <td>T JAGAN REDDY</td>
+                  <td>null</td>
+                  <td>4.05</td>
+                  <td>3.35</td>
+                  <td>1.9</td>
+               </tr>
+               <tr>
+                  <td>22881A1256</td>
+                  <td>TIRUMALA SREE VAISHNAVI</td>
+                  <td>null</td>
+                  <td>TIRUMALA RAVI KUMAR</td>
+                  <td>null</td>
+                  <td>7.25</td>
+                  <td>7.25</td>
+                  <td>7.7</td>
+               </tr>
+               <tr>
+                  <td>22881A1257</td>
+                  <td>UMME AMARAH</td>
+                  <td>null</td>
+                  <td>MOHAMMED ABDUL RAZAK</td>
+                  <td>null</td>
+                  <td>9</td>
+                  <td>8.65</td>
+                  <td>9</td>
+               </tr>
+               <tr>
+                  <td>22881A1258</td>
+                  <td>VANDYALA YUKTHASRI</td>
+                  <td>null</td>
+                  <td>VANDYALA MALLA REDDY</td>
+                  <td>null</td>
+                  <td>9.4</td>
+                  <td>9.75</td>
+                  <td>9</td>
+               </tr>
+               <tr>
+                  <td>22881A1259</td>
+                  <td>VANGA SREEJA</td>
+                  <td>null</td>
+                  <td>VANGA SRINIVAS</td>
+                  <td>null</td>
+                  <td>8.1</td>
+                  <td>9.05</td>
+                  <td>8.5</td>
+               </tr>
+               <tr>
+                  <td>22881A1260</td>
+                  <td>VATTIPALLY POOJITHA SRI</td>
+                  <td>null</td>
+                  <td>VATTIPALLY SRINIVAS</td>
+                  <td>null</td>
+                  <td>8.65</td>
+                  <td>9</td>
+                  <td>8.6</td>
+               </tr>
+               <tr>
+                  <td>22881A1261</td>
+                  <td>Y CHARAN KUMAR</td>
+                  <td>null</td>
+                  <td>Y VENGAIAH</td>
+                  <td>null</td>
+                  <td>4.25</td>
+                  <td>6.35</td>
+                  <td>6.45</td>
+               </tr>
+               <tr>
+                  <td>22881A1262</td>
+                  <td>YATHAM ARJUN YADAV</td>
+                  <td>null</td>
+                  <td>YATHAM BABU YADAV</td>
+                  <td>null</td>
+                  <td>8.15</td>
+                  <td>7.35</td>
+                  <td>7.65</td>
+               </tr>
+               <tr>
+                  <td>22881A1263</td>
+                  <td>YENNAM PRANEETHA(bcat)</td>
+                  <td>null</td>
+                  <td>YENNAM GOVARDHAN REDDY</td>
+                  <td>null</td>
+                  <td>8.85</td>
+                  <td>9.05</td>
+                  <td>8.9</td>
+               </tr>
+               <tr>
+                  <td>22881A1264</td>
+                  <td>YERASU SHASHIDHAR REDDY</td>
+                  <td>null</td>
+                  <td>YERASU VENKATA TULASI MADHUSUDHAN REDDY(spot)</td>
+                  <td>null</td>
+                  <td>3.3</td>
+                  <td>4.65</td>
+                  <td>5.95</td>
+               </tr>
+               <tr>
+                  <td>22881A1265</td>
+                  <td>ARROJULA SHASHANK</td>
+                  <td>null</td>
+                  <td>ARROJULA RAJA MOULI</td>
+                  <td>null</td>
+                  <td>9.5</td>
+                  <td>9</td>
+                  <td>8.9</td>
+               </tr>
+               <tr>
+                  <td>22881A1266</td>
+                  <td>BAIRI DINESH REDDY(bcat)</td>
+                  <td>null</td>
+                  <td>RAJENDER REDDY BAIRI</td>
+                  <td>null</td>
+                  <td>6.25</td>
+                  <td>5.3</td>
+                  <td>6.05</td>
+               </tr>
+               <tr>
+                  <td>22881A1267</td>
+                  <td>BALLA SHAILESH CHOWDARY</td>
+                  <td>null</td>
+                  <td>BALLA JOSEPH CHOWDARY</td>
+                  <td>null</td>
+                  <td>8.35</td>
+                  <td>7.85</td>
+                  <td>8.75</td>
+               </tr>
+               <tr>
+                  <td>22881A1268</td>
+                  <td>BATTULA BHOOMIKA NAGA SAI</td>
+                  <td>null</td>
+                  <td>BATTULA NAGARAJ</td>
+                  <td>null</td>
+                  <td>8.05</td>
+                  <td>8.35</td>
+                  <td>8.45</td>
+               </tr>
+               <tr>
+                  <td>22881A1269</td>
+                  <td>BHUKYA YAKU</td>
+                  <td>null</td>
+                  <td>BHUKYA EERYA</td>
+                  <td>null</td>
+                  <td>7.45</td>
+                  <td>7.6</td>
+                  <td>7.85</td>
+               </tr>
+               <tr>
+                  <td>22881A1270</td>
+                  <td>BODDAM RITESH</td>
+                  <td>null</td>
+                  <td>BODDAM SWAPNA</td>
+                  <td>null</td>
+                  <td>7.75</td>
+                  <td>7.85</td>
+                  <td>7.6</td>
+               </tr>
+               <tr>
+                  <td>22881A1271</td>
+                  <td>BOPPARAJU MEHER LAKSHMI MEGHANA(bcat)</td>
+                  <td>null</td>
+                  <td>BOPPARAJU KISHAN RAO</td>
+                  <td>null</td>
+                  <td>7.05</td>
+                  <td>6.8</td>
+                  <td>8.1</td>
+               </tr>
+               <tr>
+                  <td>22881A1272</td>
+                  <td>BORRA SRAVAN KUMAR</td>
+                  <td>null</td>
+                  <td>BORRA RAMULU</td>
+                  <td>null</td>
+                  <td>6.85</td>
+                  <td>6.5</td>
+                  <td>5.3</td>
+               </tr>
+               <tr>
+                  <td>22881A1273</td>
+                  <td>CHALLA JAYAPRAKASH REDDY</td>
+                  <td>null</td>
+                  <td>CHALLA SRINIVAS REDDY</td>
+                  <td>null</td>
+                  <td>9.1</td>
+                  <td>8.75</td>
+                  <td>7.9</td>
+               </tr>
+               <tr>
+                  <td>22881A1274</td>
+                  <td>CHARPA MEGHANADH</td>
+                  <td>null</td>
+                  <td>CHARPA THULASI RAO</td>
+                  <td>null</td>
+                  <td>3.8</td>
+                  <td>2.85</td>
+                  <td>3.2</td>
+               </tr>
+               <tr>
+                  <td>22881A1275</td>
+                  <td>CHINNAGULA NIKHIL</td>
+                  <td>null</td>
+                  <td>CHINNAGULA ASHIRVADAM</td>
+                  <td>null</td>
+                  <td>9.35</td>
+                  <td>9.3</td>
+                  <td>9.3</td>
+               </tr>
+               <tr>
+                  <td>22881A1276</td>
+                  <td>DONIKI AKHIL</td>
+                  <td>null</td>
+                  <td>DONIKI RAVI</td>
+                  <td>null</td>
+                  <td>8.55</td>
+                  <td>7.95</td>
+                  <td>7.55</td>
+               </tr>
+               <tr>
+                  <td>22881A1277</td>
+                  <td>EGAPURI SHESHIVARDHAN REDDY(bcat)</td>
+                  <td>null</td>
+                  <td>EGAPURI SHANTHI REDDY</td>
+                  <td>null</td>
+                  <td>6.6</td>
+                  <td>6.15</td>
+                  <td>5.25</td>
+               </tr>
+               <tr>
+                  <td>22881A1278</td>
+                  <td>GADDAM DEEPAK</td>
+                  <td>null</td>
+                  <td>GADDAM MAHESH</td>
+                  <td>null</td>
+                  <td>6.75</td>
+                  <td>6.45</td>
+                  <td>5.3</td>
+               </tr>
+               <tr>
+                  <td>22881A1279</td>
+                  <td>GANGONI SRESHTA(bcat)</td>
+                  <td>null</td>
+                  <td>GANGONI JAGADISH</td>
+                  <td>null</td>
+                  <td>3.75</td>
+                  <td>2.45</td>
+                  <td>2.35</td>
+               </tr>
+               <tr>
+                  <td>22881A1280</td>
+                  <td>GORUPALLY ASHWINI</td>
+                  <td>null</td>
+                  <td>GORUPALLY VENKATAIAH</td>
+                  <td>null</td>
+                  <td>9.7</td>
+                  <td>9.45</td>
+                  <td>9.15</td>
+               </tr>
+               <tr>
+                  <td>22881A1281</td>
+                  <td>GUMMI SAI LALITH REDDY(spot)</td>
+                  <td>null</td>
+                  <td>GUMMI SHANKAR REDDY</td>
+                  <td>null</td>
+                  <td>5</td>
+                  <td>5.2</td>
+                  <td>5.35</td>
+               </tr>
+               <tr>
+                  <td>22881A1282</td>
+                  <td>HEMANTH SURYA SAI SUNKARA</td>
+                  <td>null</td>
+                  <td>RAMARAO SUNKARA</td>
+                  <td>null</td>
+                  <td>9.25</td>
+                  <td>8.5</td>
+                  <td>8.8</td>
+               </tr>
+               <tr>
+                  <td>22881A1283</td>
+                  <td>KAMBLE AVINASH</td>
+                  <td>null</td>
+                  <td>KAMBLE GANGADHAR</td>
+                  <td>null</td>
+                  <td>7.5</td>
+                  <td>7.35</td>
+                  <td>7</td>
+               </tr>
+               <tr>
+                  <td>22881A1284</td>
+                  <td>KANAKATI GAYATHRI</td>
+                  <td>null</td>
+                  <td>KANAKATI RAMESH GOUD`</td>
+                  <td>null</td>
+                  <td>5.5</td>
+                  <td>7.2</td>
+                  <td>6.9</td>
+               </tr>
+               <tr>
+                  <td>22881A1285</td>
+                  <td>KANDUKURTHI LOKESH</td>
+                  <td>null</td>
+                  <td>KANDUKURTHI CHINNA BHOJANNA</td>
+                  <td>null</td>
+                  <td>8.6</td>
+                  <td>7.7</td>
+                  <td>6.9</td>
+               </tr>
+               <tr>
+                  <td>22881A1286</td>
+                  <td>KANUKULA ANSHU</td>
+                  <td>null</td>
+                  <td>KANUKULA SIDDA REDDY</td>
+                  <td>null</td>
+                  <td>9.8</td>
+                  <td>9.75</td>
+                  <td>9.05</td>
+               </tr>
+               <tr>
+                  <td>22881A1287</td>
+                  <td>KARNAM POOJITHA(bcat)</td>
+                  <td>null</td>
+                  <td>K PANDURANGA RAO</td>
+                  <td>null</td>
+                  <td>3</td>
+                  <td>3.7</td>
+                  <td>4.35</td>
+               </tr>
+               <tr>
+                  <td>22881A1288</td>
+                  <td>KATUKAM SAKETH</td>
+                  <td>null</td>
+                  <td>KATUKAM SURENDER</td>
+                  <td>null</td>
+                  <td>9.6</td>
+                  <td>9.7</td>
+                  <td>8.55</td>
+               </tr>
+               <tr>
+                  <td>22881A1289</td>
+                  <td>KOLA SHASHIVARDHAN(bcat)</td>
+                  <td>null</td>
+                  <td>KOLA SWAMY</td>
+                  <td>null</td>
+                  <td>3.3</td>
+                  <td>3.6</td>
+                  <td>3.15</td>
+               </tr>
+               <tr>
+                  <td>22881A1290</td>
+                  <td>KUCHUR SHALINI</td>
+                  <td>null</td>
+                  <td>KUCHUR MALLIKARJUN</td>
+                  <td>null</td>
+                  <td>7.35</td>
+                  <td>7.05</td>
+                  <td>7.3</td>
+               </tr>
+               <tr>
+                  <td>22881A1291</td>
+                  <td>LAKKARSU HEMANTH</td>
+                  <td>null</td>
+                  <td>LAKKARSU RAVIKUMAR</td>
+                  <td>null</td>
+                  <td>8.45</td>
+                  <td>8.4</td>
+                  <td>7.5</td>
+               </tr>
+               <tr>
+                  <td>22881A1292</td>
+                  <td>MADALA SRESHTA(bcat)</td>
+                  <td>null</td>
+                  <td>MADALA SRINIVAS RAO</td>
+                  <td>null</td>
+                  <td>7.1</td>
+                  <td>7.6</td>
+                  <td>7.75</td>
+               </tr>
+               <tr>
+                  <td>22881A1293</td>
+                  <td>MADDULAPALLY SONA REDDY</td>
+                  <td>null</td>
+                  <td>MADDULAPALLY DAMODHAR REDDY</td>
+                  <td>null</td>
+                  <td>7.2</td>
+                  <td>7.2</td>
+                  <td>7.4</td>
+               </tr>
+               <tr>
+                  <td>22881A1294</td>
+                  <td>MADIREDDY RITHVIK REDDY(bcat)</td>
+                  <td>null</td>
+                  <td>M SUDHAKAR REDDY</td>
+                  <td>null</td>
+                  <td>7.8</td>
+                  <td>8</td>
+                  <td>7.85</td>
+               </tr>
+               <tr>
+                  <td>22881A1295</td>
+                  <td>MALREDDY DINESH REDDY(bcat)</td>
+                  <td>null</td>
+                  <td>MALREDDY KRISHNA REDDY</td>
+                  <td>null</td>
+                  <td>6.1</td>
+                  <td>6.4</td>
+                  <td>5.85</td>
+               </tr>
+               <tr>
+                  <td>22881A1296</td>
+                  <td>MAMIDI SWETHA</td>
+                  <td>null</td>
+                  <td>MAMIDI RAMULU</td>
+                  <td>null</td>
+                  <td>8.55</td>
+                  <td>8.95</td>
+                  <td>8.5</td>
+               </tr>
+               <tr>
+                  <td>22881A1297</td>
+                  <td>MITTAPALLY NEEHAR KUMAR</td>
+                  <td>null</td>
+                  <td>MITTAPALLY KRISHNAIAH</td>
+                  <td>null</td>
+                  <td>9.25</td>
+                  <td>9.6</td>
+                  <td>9.4</td>
+               </tr>
+               <tr>
+                  <td>22881A1298</td>
+                  <td>MOHAMMAD ABRAR</td>
+                  <td>null</td>
+                  <td>MOHAMMAD KHAMRUDDIN</td>
+                  <td>null</td>
+                  <td>8.7</td>
+                  <td>8.3</td>
+                  <td>8.05</td>
+               </tr>
+               <tr>
+                  <td>22881A1299</td>
+                  <td>MUDUMBA SRI AKSHIT SRI VASTAV</td>
+                  <td>null</td>
+                  <td>M SAI MOHAN</td>
+                  <td>null</td>
+                  <td>9.75</td>
+                  <td>9.4</td>
+                  <td>9.3</td>
+               </tr>
+               <tr>
+                  <td>22881A12A0</td>
+                  <td>MUKKA ASHISH</td>
+                  <td>null</td>
+                  <td>MUKKA JALANDHAR</td>
+                  <td>null</td>
+                  <td>9.65</td>
+                  <td>9.5</td>
+                  <td>8.7</td>
+               </tr>
+               <tr>
+                  <td>22881A12A1</td>
+                  <td>MUNGI VVERENDHRA KUMAR</td>
+                  <td>null</td>
+                  <td>MUNGI NARASIMHA KUMAR</td>
+                  <td>null</td>
+                  <td>8</td>
+                  <td>7.1</td>
+                  <td>6.95</td>
+               </tr>
+               <tr>
+                  <td>22881A12A2</td>
+                  <td>NANDYALA RAKESH REDDY</td>
+                  <td>null</td>
+                  <td>NANDYALA SHANKAR REDDY</td>
+                  <td>null</td>
+                  <td>9.65</td>
+                  <td>9.85</td>
+                  <td>8.85</td>
+               </tr>
+               <tr>
+                  <td>22881A12A3</td>
+                  <td>P ABHILASH</td>
+                  <td>null</td>
+                  <td>P SULEMAN</td>
+                  <td>null</td>
+                  <td>9</td>
+                  <td>8.25</td>
+                  <td>8.2</td>
+               </tr>
+               <tr>
+                  <td>22881A12A4</td>
+                  <td>PANAGANTI BABITHA</td>
+                  <td>null</td>
+                  <td>PANAGANTI GIREESH</td>
+                  <td>null</td>
+                  <td>9.15</td>
+                  <td>9.45</td>
+                  <td>8.95</td>
+               </tr>
+               <tr>
+                  <td>22881A12A5</td>
+                  <td>PAYAM VINEESHA</td>
+                  <td>null</td>
+                  <td>PAYAM SURAIAH</td>
+                  <td>null</td>
+                  <td>8.9</td>
+                  <td>8.15</td>
+                  <td>7.2</td>
+               </tr>
+               <tr>
+                  <td>22881A12A6</td>
+                  <td>PENDEM SAMPATH</td>
+                  <td>null</td>
+                  <td>PENDEM GANESH</td>
+                  <td>null</td>
+                  <td>7.6</td>
+                  <td>7.75</td>
+                  <td>7.65</td>
+               </tr>
+               <tr>
+                  <td>22881A12A7</td>
+                  <td>RACHAKONDA HARIKA GUPTHA</td>
+                  <td>null</td>
+                  <td>RACHAKONDA RAJENDER</td>
+                  <td>null</td>
+                  <td>9.2</td>
+                  <td>8.3</td>
+                  <td>7.5</td>
+               </tr>
+               <tr>
+                  <td>22881A12A8</td>
+                  <td>RACHELLI KRISHNA TEJA</td>
+                  <td>null</td>
+                  <td>RACHELLI MALLESH</td>
+                  <td>null</td>
+                  <td>6.9</td>
+                  <td>5.55</td>
+                  <td>6.3</td>
+               </tr>
+               <tr>
+                  <td>22881A12A9</td>
+                  <td>RAVIPALLY SAINIKHILA REDDY</td>
+                  <td>null</td>
+                  <td>RAVIPALLY MAHIPAL REDDY</td>
+                  <td>null</td>
+                  <td>9.05</td>
+                  <td>8.7</td>
+                  <td>8.85</td>
+               </tr>
+               <tr>
+                  <td>22881A12B0</td>
+                  <td>RAVULA SAHITHI</td>
+                  <td>null</td>
+                  <td>R RAGHUPATHI REDDY</td>
+                  <td>null</td>
+                  <td>8.05</td>
+                  <td>7.7</td>
+                  <td>8.6</td>
+               </tr>
+               <tr>
+                  <td>22881A12B1</td>
+                  <td>RAVULA VINAYKUMAR</td>
+                  <td>null</td>
+                  <td>RAVULA SADAIAH</td>
+                  <td>null</td>
+                  <td>7.8</td>
+                  <td>7.7</td>
+                  <td>8.6</td>
+               </tr>
+               <tr>
+                  <td>22881A12B2</td>
+                  <td>GAJENGI SAI VARDHAN</td>
+                  <td>null</td>
+                  <td>RAJ KUMAR</td>
+                  <td>null</td>
+                  <td>8.1</td>
+                  <td>7</td>
+                  <td>7.8</td>
+               </tr>
+               <tr>
+                  <td>22881A12B3</td>
+                  <td>SALIVENDRI SREEDHA(bcat)</td>
+                  <td>null</td>
+                  <td>SALIVENDRI VENKAT REDDY</td>
+                  <td>null</td>
+                  <td>8.65</td>
+                  <td>8.7</td>
+                  <td>8.6</td>
+               </tr>
+               <tr>
+                  <td>22881A12B4</td>
+                  <td>SANIA</td>
+                  <td>null</td>
+                  <td>SHABBIR AHMED</td>
+                  <td>null</td>
+                  <td>6.95</td>
+                  <td>7.85</td>
+                  <td>7.9</td>
+               </tr>
+               <tr>
+                  <td>22881A12B5</td>
+                  <td>SAREDDY SAI KIRAN REDDY(bcat)</td>
+                  <td>null</td>
+                  <td>SAREDDY SAIDI REDDY</td>
+                  <td>null</td>
+                  <td>7.7</td>
+                  <td>7.6</td>
+                  <td>8.05</td>
+               </tr>
+               <tr>
+                  <td>22881A12B6</td>
+                  <td>SAYYADA IFRAH(bcat)</td>
+                  <td>null</td>
+                  <td>SYED FASIUDDIN</td>
+                  <td>null</td>
+                  <td>7.85</td>
+                  <td>6.9</td>
+                  <td>7.1</td>
+               </tr>
+               <tr>
+                  <td>22881A12B7</td>
+                  <td>SHAIK ARSHIYA KOUSAR</td>
+                  <td>null</td>
+                  <td>SHAIK RAJA SAHEB</td>
+                  <td>null</td>
+                  <td>8.3</td>
+                  <td>8.25</td>
+                  <td>8.65</td>
+               </tr>
+               <tr>
+                  <td>22881A12B8</td>
+                  <td>SINGIDI MADHULITHA</td>
+                  <td>null</td>
+                  <td>SINGIDI NARSIMHA REDDY</td>
+                  <td>null</td>
+                  <td>8.1</td>
+                  <td>9.3</td>
+                  <td>8.5</td>
+               </tr>
+               <tr>
+                  <td>22881A12B9</td>
+                  <td>T JAHNAVI</td>
+                  <td>null</td>
+                  <td>SRIDHAR REDDY TIPARTHI</td>
+                  <td>null</td>
+                  <td>9.4</td>
+                  <td>9.4</td>
+                  <td>9.15</td>
+               </tr>
+               <tr>
+                  <td>22881A12C0</td>
+                  <td>TALLA GANESH GOUD</td>
+                  <td>null</td>
+                  <td>TALLA BIKSHAPATHI GOUD</td>
+                  <td>null</td>
+                  <td>8.2</td>
+                  <td>7.85</td>
+                  <td>7.9</td>
+               </tr>
+               <tr>
+                  <td>22881A12C1</td>
+                  <td>THAKUR HARSHINI</td>
+                  <td>null</td>
+                  <td>THAKUR VIJAY SINGH</td>
+                  <td>null</td>
+                  <td>8.7</td>
+                  <td>9</td>
+                  <td>8.55</td>
+               </tr>
+               <tr>
+                  <td>22881A12C2</td>
+                  <td>THALLAPALLY CHARVI JASMINE</td>
+                  <td>null</td>
+                  <td>THALLAPALLY DAYAKAR</td>
+                  <td>null</td>
+                  <td>7.6</td>
+                  <td>8</td>
+                  <td>7.35</td>
+               </tr>
+               <tr>
+                  <td>22881A12C3</td>
+                  <td>THOTA ESWAR NIHAL(spot)</td>
+                  <td>null</td>
+                  <td>THOTA UMA MAHESWARA RAO</td>
+                  <td>null</td>
+                  <td>5.3</td>
+                  <td>4.85</td>
+                  <td>5.45</td>
+               </tr>
+               <tr>
+                  <td>22881A12C4</td>
+                  <td>VABHANAGIRI UJWAL</td>
+                  <td>null</td>
+                  <td>V VIJAYA KUMARcc</td>
+                  <td>null</td>
+                  <td>7.2</td>
+                  <td>6.6</td>
+                  <td>6.95</td>
+               </tr>
+               <tr>
+                  <td>22881A12C5</td>
+                  <td>VANKARAMANI AMOGH BHUSHAN</td>
+                  <td>null</td>
+                  <td>VANKARAMANI PRAVEEN KUMAR</td>
+                  <td>null</td>
+                  <td>8.5</td>
+                  <td>8.8</td>
+                  <td>8.3</td>
+               </tr>
+               <tr>
+                  <td>22881A12C6</td>
+                  <td>VIGNESH REDDY MADDI(bcat)</td>
+                  <td>null</td>
+                  <td>MADDI RAGHUNATH REDDY</td>
+                  <td>null</td>
+                  <td>7.95</td>
+                  <td>7.75</td>
+                  <td>6.75</td>
+               </tr>
+               <tr>
+                  <td>22881A12C7</td>
+                  <td>VUPPALA SAI KEERTHANA(bcat)</td>
+                  <td>null</td>
+                  <td>VUPPALA RAMESH</td>
+                  <td>null</td>
+                  <td>7.9</td>
+                  <td>7.55</td>
+                  <td>7.7</td>
+               </tr>
+               <tr>
+                  <td>22881A12C8</td>
+                  <td>YARA SHREYA</td>
+                  <td>null</td>
+                  <td>YARA ACHAIAH</td>
+                  <td>null</td>
+                  <td>9.6</td>
+                  <td>9.75</td>
+                  <td>9</td>
+               </tr>
+               <tr>
+                  <td>22881A12C9</td>
+                  <td>ARON DSOUZA(bcat)</td>
+                  <td>9849583637</td>
+                  <td>FRANCIS DSOUZA</td>
+                  <td>9908422566</td>
+                  <td>7.3</td>
+                  <td>6.55</td>
+                  <td>7.8</td>
+               </tr>
+               <tr>
+                  <td>22881A12D0</td>
+                  <td>BALNE HEMANTH KUMAR</td>
+                  <td>9581963390</td>
+                  <td>BALNE KOMURAMALLU</td>
+                  <td>9949117829</td>
+                  <td>8.05</td>
+                  <td>8.5</td>
+                  <td>8.65</td>
+               </tr>
+               <tr>
+                  <td>22881A12D1</td>
+                  <td>BARKUNTA SRINIVAS</td>
+                  <td>7032872857</td>
+                  <td>GANGARAM</td>
+                  <td>7032872857</td>
+                  <td>7.25</td>
+                  <td>7.75</td>
+                  <td>7.3</td>
+               </tr>
+               <tr>
+                  <td>22881A12D2</td>
+                  <td>BATTALA AKSHAYA</td>
+                  <td>9121957321</td>
+                  <td>BATTALA SATISH KUMAR</td>
+                  <td>8008100321</td>
+                  <td>9.3</td>
+                  <td>9.3</td>
+                  <td>9.7</td>
+               </tr>
+               <tr>
+                  <td>22881A12D3</td>
+                  <td>BEJJANKI VARUN TEJ</td>
+                  <td>9912156423</td>
+                  <td>BEJJANKI SRINIVAS</td>
+                  <td>9912946664</td>
+                  <td>6.55</td>
+                  <td>6.45</td>
+                  <td>6.7</td>
+               </tr>
+               <tr>
+                  <td>22881A12D4</td>
+                  <td>BODDUPALLY SAI KUMAR</td>
+                  <td>9063602512</td>
+                  <td>BODDUPALLY THIRUPATHAIAH</td>
+                  <td>9701783657</td>
+                  <td>9.25</td>
+                  <td>8.8</td>
+                  <td>9.4</td>
+               </tr>
+               <tr>
+                  <td>22881A12D5</td>
+                  <td>BUDIGUM HARSHITHA(bcat)</td>
+                  <td>6303276124</td>
+                  <td>BUDIGUM RAJESH</td>
+                  <td>9642333444</td>
+                  <td>9.35</td>
+                  <td>9.2</td>
+                  <td>9.7</td>
+               </tr>
+               <tr>
+                  <td>22881A12D6</td>
+                  <td>BURUGU YASHWANTH(bcat)</td>
+                  <td>9515473052</td>
+                  <td>NULL</td>
+                  <td>9848073295</td>
+                  <td>8.95</td>
+                  <td>8.9</td>
+                  <td>9.2</td>
+               </tr>
+               <tr>
+                  <td>22881A12D7</td>
+                  <td>CHINTHAPATLA KAVYASREE</td>
+                  <td>6304867859</td>
+                  <td>C JEEVAN PRAKASH</td>
+                  <td>7032619332</td>
+                  <td>9.25</td>
+                  <td>9.65</td>
+                  <td>9.85</td>
+               </tr>
+               <tr>
+                  <td>22881A12D8</td>
+                  <td>CHITTEDI KEERTHI REDDY(bcat)</td>
+                  <td>9440382711</td>
+                  <td>CHITTEDI ANANTHA REDDY</td>
+                  <td>9666982711</td>
+                  <td>8.45</td>
+                  <td>8.65</td>
+                  <td>9.35</td>
+               </tr>
+               <tr>
+                  <td>22881A12D9</td>
+                  <td>DENDHI HARSHAVARDHAN REDDY(bcat)</td>
+                  <td>8555977162</td>
+                  <td>DENDHI SHEKAR REDDY</td>
+                  <td>9989761320</td>
+                  <td>5.85</td>
+                  <td>4.3</td>
+                  <td>1.55</td>
+               </tr>
+               <tr>
+                  <td>22881A12E0</td>
+                  <td>DOBBALI SAINATH</td>
+                  <td>8464093270</td>
+                  <td>DOBBALI MANYAM</td>
+                  <td>9490634015</td>
+                  <td>8.1</td>
+                  <td>8.6</td>
+                  <td>8.5</td>
+               </tr>
+               <tr>
+                  <td>22881A12E1</td>
+                  <td>DONIKENA VISHWATEJA</td>
+                  <td>9121316189</td>
+                  <td>DONIKENA NAGESH</td>
+                  <td>9948408625</td>
+                  <td>7.55</td>
+                  <td>8.15</td>
+                  <td>7.95</td>
+               </tr>
+               <tr>
+                  <td>22881A12E2</td>
+                  <td>ENUGUKONDA ANANTHA SAI NAGA VARSHINI</td>
+                  <td>7981678075</td>
+                  <td>ENUGUKONDA NARESH</td>
+                  <td>8919648323</td>
+                  <td>8.6</td>
+                  <td>9.2</td>
+                  <td>9.3</td>
+               </tr>
+               <tr>
+                  <td>22881A12E3</td>
+                  <td>GADDAM VIJAYASRI</td>
+                  <td>9866803676</td>
+                  <td>GADDAM RAMPRASAD RAO</td>
+                  <td>9849655699</td>
+                  <td>6.85</td>
+                  <td>7.15</td>
+                  <td>6.85</td>
+               </tr>
+               <tr>
+                  <td>22881A12E4</td>
+                  <td>GAJAGOWNI VARSHITH GOUD(bcat)</td>
+                  <td>8522923211</td>
+                  <td>GIRAIAH</td>
+                  <td>8309858211</td>
+                  <td>6.3</td>
+                  <td>5.6</td>
+                  <td>6.2</td>
+               </tr>
+               <tr>
+                  <td>22881A12E5</td>
+                  <td>GATLA SAITEJA</td>
+                  <td>7036815258</td>
+                  <td>GATLA RAVINDHAR</td>
+                  <td>7036815258</td>
+                  <td>6.9</td>
+                  <td>6.9</td>
+                  <td>7.25</td>
+               </tr>
+               <tr>
+                  <td>22881A12E6</td>
+                  <td>GEEDI NIKHIL</td>
+                  <td>9182701463</td>
+                  <td>GEEDI NARENDER</td>
+                  <td>7337495798</td>
+                  <td>8.4</td>
+                  <td>8.25</td>
+                  <td>8.4</td>
+               </tr>
+               <tr>
+                  <td>22881A12E7</td>
+                  <td>GIRADA NAVYA</td>
+                  <td>7396575428</td>
+                  <td>GIRADA ANAND RAO</td>
+                  <td>9441723341</td>
+                  <td>9.35</td>
+                  <td>9</td>
+                  <td>9.25</td>
+               </tr>
+               <tr>
+                  <td>22881A12E8</td>
+                  <td>GOLLA POOJA CHAMUNDI</td>
+                  <td>9490392129</td>
+                  <td>G MADHUSUDHAN</td>
+                  <td>9494982111</td>
+                  <td>5.35</td>
+                  <td>5.85</td>
+                  <td>5.15</td>
+               </tr>
+               <tr>
+                  <td>22881A12E9</td>
+                  <td>GUNTI SUSANNA(bcat)</td>
+                  <td>7995698350</td>
+                  <td>GUNTI RAJU</td>
+                  <td>9000784964</td>
+                  <td>8.5</td>
+                  <td>8.7</td>
+                  <td>8.35</td>
+               </tr>
+               <tr>
+                  <td>22881A12F0</td>
+                  <td>JARAPULA ANIL</td>
+                  <td>9730629860</td>
+                  <td>J BALYA</td>
+                  <td>9730022443</td>
+                  <td>9.15</td>
+                  <td>8.9</td>
+                  <td>8.75</td>
+               </tr>
+               <tr>
+                  <td>22881A12F1</td>
+                  <td>K SRAVANI</td>
+                  <td>7670850761</td>
+                  <td>K BHASKAR REDDY</td>
+                  <td>9959370515</td>
+                  <td>9.6</td>
+                  <td>9.7</td>
+                  <td>9.2</td>
+               </tr>
+               <tr>
+                  <td>22881A12F2</td>
+                  <td>KAMBALAPALLY SAI GANESH REDDY(bcat)</td>
+                  <td>9396993399</td>
+                  <td>K YADAGIRI REDDY</td>
+                  <td>9393993399</td>
+                  <td>9.8</td>
+                  <td>9.4</td>
+                  <td>9.2</td>
+               </tr>
+               <tr>
+                  <td>22881A12F3</td>
+                  <td>KARINGULA NAVYA</td>
+                  <td>9398022853</td>
+                  <td>KARINGULA SAIDULU</td>
+                  <td>9948276694</td>
+                  <td>4.05</td>
+                  <td>5.65</td>
+                  <td>7.05</td>
+               </tr>
+               <tr>
+                  <td>22881A12F4</td>
+                  <td>KATINEEDI AJAY</td>
+                  <td>6302807982</td>
+                  <td>KATINEEDI VENKATESHWARLU</td>
+                  <td>9441921711</td>
+                  <td>7.85</td>
+                  <td>7.65</td>
+                  <td>8.2</td>
+               </tr>
+               <tr>
+                  <td>22881A12F5</td>
+                  <td>KATTA SIDHARTHA REDDY</td>
+                  <td>9392548369</td>
+                  <td>KATTA VENKAT NARSIMHA REDDY</td>
+                  <td>6301461805</td>
+                  <td>7.95</td>
+                  <td>8.05</td>
+                  <td>8.75</td>
+               </tr>
+               <tr>
+                  <td>22881A12F6</td>
+                  <td>KAYITHI SUJEETH REDDY</td>
+                  <td>8309220973</td>
+                  <td>KAYITHI KONDAL REDDY</td>
+                  <td>9441039127</td>
+                  <td>6.15</td>
+                  <td>6.4</td>
+                  <td>6.8</td>
+               </tr>
+               <tr>
+                  <td>22881A12F7</td>
+                  <td>KOTRA DHANUSH</td>
+                  <td>6304747972</td>
+                  <td> KOTRA ANAND</td>
+                  <td>9440233381</td>
+                  <td>9.6</td>
+                  <td>9.45</td>
+                  <td>9.2</td>
+               </tr>
+               <tr>
+                  <td>22881A12F8</td>
+                  <td>KUDUMULA BHAVYA SREE REDDY</td>
+                  <td>9390463252</td>
+                  <td>KUDUMULA SRIKANTH REDDY</td>
+                  <td>9440094724</td>
+                  <td>9</td>
+                  <td>9.35</td>
+                  <td>8.85</td>
+               </tr>
+               <tr>
+                  <td>22881A12F9</td>
+                  <td>M JOEL JOSHUA</td>
+                  <td>9032676147</td>
+                  <td>SWADESH</td>
+                  <td>9030520436</td>
+                  <td>7.7</td>
+                  <td>7.7</td>
+                  <td>7.9</td>
+               </tr>
+               <tr>
+                  <td>22881A12G0</td>
+                  <td>MADHULAPALLY SIDDHARTHA REDDY(bcat)</td>
+                  <td>6281177934</td>
+                  <td>MADHULAPALLY ANIL REDDY</td>
+                  <td>6281177934</td>
+                  <td>5.25</td>
+                  <td>3.95</td>
+                  <td>2.4</td>
+               </tr>
+               <tr>
+                  <td>22881A12G1</td>
+                  <td>MANGALI DIVYA</td>
+                  <td>9603114077</td>
+                  <td>MANGALI MANAIAH </td>
+                  <td>9640251168</td>
+                  <td>9.25</td>
+                  <td>9.2</td>
+                  <td>9.3</td>
+               </tr>
+               <tr>
+                  <td>22881A12G2</td>
+                  <td>MANNE HARIKIRAN(spot)</td>
+                  <td>9000533598</td>
+                  <td>MANNE VENKATESHWAR RAO</td>
+                  <td>8790117722</td>
+                  <td>6.65</td>
+                  <td>6.5</td>
+                  <td>7.0\5</td>
+               </tr>
+               <tr>
+                  <td>22881A12G3</td>
+                  <td>MEESALA MOKSHADA</td>
+                  <td>9000666048</td>
+                  <td>M RAM KUMAR </td>
+                  <td>9989999987</td>
+                  <td>7.65</td>
+                  <td>7.4</td>
+                  <td>7.8</td>
+               </tr>
+               <tr>
+                  <td>22881A12G4</td>
+                  <td>MIRYALA PRANUSHA</td>
+                  <td>6300046097</td>
+                  <td>MIRYALA SRINIVAS REDDY</td>
+                  <td>9247586413</td>
+                  <td>8.95</td>
+                  <td>8.5</td>
+                  <td>9.1</td>
+               </tr>
+               <tr>
+                  <td>22881A12G5</td>
+                  <td>MOHAMMAD REHAN AKRAM</td>
+                  <td>6303977186</td>
+                  <td>MOHAMMAD JAKEER</td>
+                  <td>9848230786</td>
+                  <td>9.3</td>
+                  <td>8.8</td>
+                  <td>8.7</td>
+               </tr>
+               <tr>
+                  <td>22881A12G6</td>
+                  <td>MURARISHETTI JASHWANTH SAI(bcat)</td>
+                  <td>9515127724</td>
+                  <td>MURARISHETTI SRINIVASULU</td>
+                  <td>9866760028</td>
+                  <td>6.3</td>
+                  <td>6.8</td>
+                  <td>7.3</td>
+               </tr>
+               <tr>
+                  <td>22881A12G7</td>
+                  <td>NANNA SAI PRASAD(bcat)</td>
+                  <td>7013715972</td>
+                  <td>NANNA PENTAIAH </td>
+                  <td>9010188207</td>
+                  <td>6.45</td>
+                  <td>5.4</td>
+                  <td>6.15</td>
+               </tr>
+               <tr>
+                  <td>22881A12G8</td>
+                  <td>PADAMATI SRICHARAN REDDY</td>
+                  <td>9381940376</td>
+                  <td>PADAMATI THIRUPATHI REDDY</td>
+                  <td>7207395584</td>
+                  <td>8.3</td>
+                  <td>8.25</td>
+                  <td>8.2</td>
+               </tr>
+               <tr>
+                  <td>22881A12G9</td>
+                  <td>PALVAI SRINADH REDDY</td>
+                  <td>9346704214</td>
+                  <td>PALVAI UPENDER REDDY</td>
+                  <td>9912387302</td>
+                  <td>8.4</td>
+                  <td>7.75</td>
+                  <td>7.6</td>
+               </tr>
+               <tr>
+                  <td>22881A12H0</td>
+                  <td>PANTHANGI VINEESH</td>
+                  <td>8919051542</td>
+                  <td>PANTHANGI NARSIMHA</td>
+                  <td>9951184203</td>
+                  <td>8.2</td>
+                  <td>8.55</td>
+                  <td>8.4</td>
+               </tr>
+               <tr>
+                  <td>22881A12H1</td>
+                  <td>PAREPALLY VEDHANTH GOUD(bcat)</td>
+                  <td>null</td>
+                  <td>PAREPALLY PRASAD KUMAR</td>
+                  <td>null</td>
+                  <td>3.3</td>
+                  <td>3.9</td>
+                  <td>4.85</td>
+               </tr>
+               <tr>
+                  <td>22881A12H2</td>
+                  <td>PATTOORI DEEPAK TEJA</td>
+                  <td>null</td>
+                  <td>PATTOORI LINGAMURTHY</td>
+                  <td>null</td>
+                  <td>8.45</td>
+                  <td>8.6</td>
+                  <td>8.6</td>
+               </tr>
+               <tr>
+                  <td>22881A12H3</td>
+                  <td>PRATAP VARSHA SREE</td>
+                  <td>null</td>
+                  <td>P SREENIVASULU</td>
+                  <td>null</td>
+                  <td>9.4</td>
+                  <td>9.15</td>
+                  <td>9.15</td>
+               </tr>
+               <tr>
+                  <td>22881A12H4</td>
+                  <td>RACHA AJAY KUMAR</td>
+                  <td>null</td>
+                  <td>RACHA SRINIVAS</td>
+                  <td>null</td>
+                  <td>8.25</td>
+                  <td>8.7</td>
+                  <td>8.85</td>
+               </tr>
+               <tr>
+                  <td>22881A12H5</td>
+                  <td>REMALLI JYOTHIRMAI</td>
+                  <td>null</td>
+                  <td>REMALLI JAYA RAJU</td>
+                  <td>null</td>
+                  <td>9.45</td>
+                  <td>9.5</td>
+                  <td>8.6</td>
+               </tr>
+               <tr>
+                  <td>22881A12H6</td>
+                  <td>RISHAB KUMAR JAISWAL</td>
+                  <td>null</td>
+                  <td>RITESH KUMAR JAISWAL</td>
+                  <td>null</td>
+                  <td>6.85</td>
+                  <td>7.25</td>
+                  <td>7.3</td>
+               </tr>
+               <tr>
+                  <td>22881A12H7</td>
+                  <td>SUBRAT KUMAR JAIN(bcat)</td>
+                  <td>null</td>
+                  <td>RAJESH KUMAR JAIN</td>
+                  <td>null</td>
+                  <td>7.15</td>
+                  <td>6.75</td>
+                  <td>7.05</td>
+               </tr>
+               <tr>
+                  <td>22881A12H8</td>
+                  <td>SUNIL SUTHAR(spot)</td>
+                  <td>null</td>
+                  <td>BHANWAR LAL</td>
+                  <td>null</td>
+                  <td>6.45</td>
+                  <td>6.5</td>
+                  <td>7</td>
+               </tr>
+               <tr>
+                  <td>22881A12H9</td>
+                  <td>SUNKET HASINI</td>
+                  <td>null</td>
+                  <td>SUNKET RAJENDER GOUD</td>
+                  <td>null</td>
+                  <td>4.75</td>
+                  <td>5.35</td>
+                  <td>6.4</td>
+               </tr>
+               <tr>
+                  <td>22881A12J0</td>
+                  <td>TADAKAMALLA SREEVARSHA</td>
+                  <td>null</td>
+                  <td>TADAKAMALLA SREENIVAS</td>
+                  <td>null</td>
+                  <td>9.35</td>
+                  <td>9.25</td>
+                  <td>9</td>
+               </tr>
+               <tr>
+                  <td>22881A12J1</td>
+                  <td>TANDA AKSHITHA</td>
+                  <td>null</td>
+                  <td>TANDA SHIVA KUMAR GOUD</td>
+                  <td>null</td>
+                  <td>8.6</td>
+                  <td>8.05</td>
+                  <td>8.6</td>
+               </tr>
+               <tr>
+                  <td>22881A12J2</td>
+                  <td>TEJASVI BONAM(bcat)</td>
+                  <td>null</td>
+                  <td>RAMA CHANDRA RAO BONAM</td>
+                  <td>null</td>
+                  <td>8.7</td>
+                  <td>8.5</td>
+                  <td>8.9</td>
+               </tr>
+               <tr>
+                  <td>22881A12J3</td>
+                  <td>THATIKONDA MAHESH</td>
+                  <td>null</td>
+                  <td>THATIKONDA YADAIAH</td>
+                  <td>null</td>
+                  <td>9.5</td>
+                  <td>9.8</td>
+                  <td>8.95</td>
+               </tr>
+               <tr>
+                  <td>22881A12J4</td>
+                  <td>THOTA SRINITHYA</td>
+                  <td>null</td>
+                  <td>THOTA SRIDHAR</td>
+                  <td>null</td>
+                  <td>9.3</td>
+                  <td>9.5</td>
+                  <td>9.2</td>
+               </tr>
+               <tr>
+                  <td>22881A12J5</td>
+                  <td>UNDRALLA SHYAM SUNDHAR</td>
+                  <td>null</td>
+                  <td>UNDRALLA NARSIMHA RAO</td>
+                  <td>null</td>
+                  <td>6.6</td>
+                  <td>6.7</td>
+                  <td>6.5</td>
+               </tr>
+               <tr>
+                  <td>22881A12J6</td>
+                  <td>V SAI SHREE</td>
+                  <td>null</td>
+                  <td>V RAMABHUPAL ACHARI</td>
+                  <td>null</td>
+                  <td>8.45</td>
+                  <td>9.25</td>
+                  <td>9</td>
+               </tr>
+               <tr>
+                  <td>22881A12J7</td>
+                  <td>VARUN REDDY</td>
+                  <td>null</td>
+                  <td>RAVINDER REDDY</td>
+                  <td>null</td>
+                  <td>9.45</td>
+                  <td>9.85</td>
+                  <td>9</td>
+               </tr>
+               <tr>
+                  <td>22881A12J8</td>
+                  <td>VINJAMURI SAIRAKSHI</td>
+                  <td>null</td>
+                  <td>VINJAMURI DHAMODAR</td>
+                  <td>null</td>
+                  <td>9.45</td>
+                  <td>9.55</td>
+                  <td>9.15</td>
+               </tr>
+               <tr>
+                  <td>22881A12J9</td>
+                  <td>VUTUKURI BHAVIKA REDDY(bcat)</td>
+                  <td>null</td>
+                  <td>VUTUKURI SURENDAR REDDY</td>
+                  <td>null</td>
+                  <td>6.9</td>
+                  <td>6.9</td>
+                  <td>7</td>
+               </tr>
+               <tr>
+                  <td>22881A12K0</td>
+                  <td>Y JAI ANTHONY RAHUL REDDY(bcat)</td>
+                  <td>null</td>
+                  <td>Y SUNIL KUMAR REDDY</td>
+                  <td>null</td>
+                  <td>6.65</td>
+                  <td>5.75</td>
+                  <td>7.55</td>
+               </tr>
+               <tr>
+                  <td>22881A12K1</td>
+                  <td>YENUGULA AKSHITHA REDDY</td>
+                  <td>null</td>
+                  <td>YENUGULA MADHAVA REDDY</td>
+                  <td>null</td>
+                  <td>8.6</td>
+                  <td>9.15</td>
+                  <td>8.95</td>
+               </tr>
+            </tbody>
+         </table>
+      </div>
+      <script>
+         const idSidPairs = {"22881A1201":"100556","22881A1202":"100557","22881A1203":"100558","22881A1204":"100559","22881A1205":"100560","22881A1206":"100561","22881A1207":"100562","22881A1208":"100563","22881A1209":"100564","22881A1210":"100565","22881A1211":"100566","22881A1212":"100567","22881A1213":"100568","22881A1214":"100569","22881A1215":"100570","22881A1216":"100571","22881A1217":"100572","22881A1218":"100573","22881A1219":"100574","22881A1220":"100575","22881A1221":"100576","22881A1222":"100577","22881A1223":"100578","22881A1224":"100579","22881A1225":"100580","22881A1226":"100581","22881A1227":"100582","22881A1228":"100583","22881A1229":"100584","22881A1230":"100585","22881A1231":"100586","22881A1232":"100587","22881A1233":"100588","22881A1234":"100589","22881A1235":"100590","22881A1236":"100591","22881A1237":"100592","22881A1238":"100593","22881A1239":"100594","22881A1240":"100595","22881A1241":"100596","22881A1242":"100597","22881A1243":"100598","22881A1244":"100599","22881A1245":"100600","22881A1246":"100601","22881A1247":"100602","22881A1248":"100603","22881A1249":"100604","22881A1250":"100605","22881A1251":"100606","22881A1252":"100607","22881A1253":"100608","22881A1254":"100609","22881A1255":"100610","22881A1256":"100611","22881A1257":"100612","22881A1258":"100613","22881A1259":"100614","22881A1260":"100615","22881A1261":"100616","22881A1262":"100617","22881A1263":"100618","22881A1264":"100619","22881A1265":"100620","22881A1266":"100621","22881A1267":"100622","22881A1268":"100623","22881A1269":"100624","22881A1270":"100625","22881A1271":"100626","22881A1272":"100627","22881A1273":"100628","22881A1274":"100629","22881A1275":"100630","22881A1276":"100631","22881A1277":"100632","22881A1278":"100633","22881A1279":"100634","22881A1280":"100635","22881A1281":"100636","22881A1282":"100637","22881A1283":"100638","22881A1284":"100639","22881A1285":"100640","22881A1286":"100641","22881A1287":"100642","22881A1288":"100643","22881A1289":"100644","22881A1290":"100645","22881A1291":"100646","22881A1292":"100647","22881A1293":"100648","22881A1294":"100649","22881A1295":"100650","22881A1296":"100651","22881A1297":"100652","22881A1298":"100653","22881A1299":"100654","22881A12A0":"100655","22881A12A1":"100656","22881A12A2":"100657","22881A12A3":"100658","22881A12A4":"100659","22881A12A5":"100660","22881A12A6":"100661","22881A12A7":"100662","22881A12A8":"100663","22881A12A9":"100664","22881A12B0":"100665","22881A12B1":"100666","22881A12B2":"100667","22881A12B3":"100668","22881A12B4":"100669","22881A12B5":"100670","22881A12B6":"100671","22881A12B7":"100672","22881A12B8":"100673","22881A12B9":"100674","22881A12C0":"100675","22881A12C1":"100676","22881A12C2":"100677","22881A12C3":"100678","22881A12C4":"100679","22881A12C5":"100680","22881A12C6":"100681","22881A12C7":"100682","22881A12C8":"100683","22881A12C9":"100684","22881A12D0":"100685","22881A12D1":"100686","22881A12D2":"100687","22881A12D3":"100688","22881A12D4":"100689","22881A12D5":"100690","22881A12D6":"100691","22881A12D7":"100692","22881A12D8":"100693","22881A12D9":"100694","22881A12E0":"100695","22881A12E1":"100696","22881A12E2":"100697","22881A12E3":"100698","22881A12E4":"100699","22881A12E5":"100700","22881A12E6":"100701","22881A12E7":"100702","22881A12E8":"100703","22881A12E9":"100704","22881A12F0":"100705","22881A12F1":"100706","22881A12F2":"100707","22881A12F3":"100708","22881A12F4":"100709","22881A12F5":"100710","22881A12F6":"100711","22881A12F7":"100712","22881A12F8":"100713","22881A12F9":"100714","22881A12G0":"100715","22881A12G1":"100716","22881A12G2":"100717","22881A12G3":"100718","22881A12G4":"100719","22881A12G5":"100720","22881A12G6":"100721","22881A12G7":"100722","22881A12G8":"100723","22881A12G9":"100724","22881A12H0":"100725","22881A12H1":"100726","22881A12H2":"100727","22881A12H3":"100728","22881A12H4":"100729","22881A12H5":"100730","22881A12H6":"100731","22881A12H7":"100732","22881A12H8":"100733","22881A12H9":"100734","22881A12J0":"100735","22881A12J1":"100736","22881A12J2":"100737","22881A12J3":"100738","22881A12J4":"100739","22881A12J5":"100740","22881A12J6":"100741","22881A12J7":"100742","22881A12J8":"100743","22881A12J9":"100744","22881A12K0":"100745","22881A12K1":"100746"};
+         const studentResultLinks = { "22881A1201":"https://drive.google.com/file/d/1RLVnWmcbQe_3KVjA8-Mc7bcJ3iYmDTp3/view?usp=drive_link",
+         "22881A1202":" https://drive.google.com/file/d/1bghhq5PYP1oF_B-DjJPAua18qESTuCJN/view?usp=drive_link",
+         "22881A1203":" https://drive.google.com/file/d/1AZ00SD3qhnb3lFvNVCpHMTRtupoK_Fdo/view?usp=drive_link",
+         "22881A1204":" https://drive.google.com/file/d/1-yd9nCYYavL0ztVonCZWDo2Jg_cdrZvr/view?usp=drive_link",
+         "22881A1205":" https://drive.google.com/file/d/1vEAbdGJ6hRYWtJuTe3kPuxMoXrdR9XMC/view?usp=drive_link",
+         "22881A1206":" https://drive.google.com/file/d/1pIQ-QHYx4-EmkBQxC379Pp-VXPkcLZ1x/view?usp=drive_link",
+         "22881A1207":" https://drive.google.com/file/d/1sJnJn5WkjERIDVyvrBZSPBsUZ2I2Lbl5/view?usp=drive_link",
+         "22881A1208":" https://drive.google.com/file/d/1DTzbqShDpDHMY49rTW1d2t87NfKoV8v4/view?usp=drive_link",
+         "22881A1209":" https://drive.google.com/file/d/1g-V1onFPGQwKSYnuOc5uz-abfzL1HK4U/view?usp=drive_link",
+         "22881A1210":" https://drive.google.com/file/d/1-a0nsct9Dh06erCRUjLyfRezacP6XLnJ/view?usp=drive_link",
+         "22881A1211":" https://drive.google.com/file/d/1_1LvOojvcLzZasvurk0Eqe_dWPzg5aaq/view?usp=drive_link",
+         "22881A1212":" https://drive.google.com/file/d/1fRrMpGCc2CI6OFq6Ywhh45xAcVxS-vp0/view?usp=drive_link",
+         "22881A1213":" https://drive.google.com/file/d/1zstdspV6yN-bKJCsVWGYZGXOwp2t-3Xk/view?usp=drive_link",
+         "22881A1214":" https://drive.google.com/file/d/1NCQpRjzCKz4z_yHaas8gaOSp9qmr-08G/view?usp=drive_link",
+         "22881A1215":" https://drive.google.com/file/d/1OBKfcgPvY4Cvg_LCuhlGfukZOHie9Bn7/view?usp=drive_link",
+         "22881A1216":" https://drive.google.com/file/d/1WVUBO5IboL4cvEN_WRaUBwNjWT4RiTSm/view?usp=drive_link",
+         "22881A1217":" https://drive.google.com/file/d/160dsu8DqtBiy2qKaPF9kDW6Mz5no0tvR/view?usp=drive_link",
+         "22881A1218":" https://drive.google.com/file/d/1HjxzNlZ9C-EdcCuZGXzoPX72ygKKq9H4/view?usp=drive_link",
+         "22881A1219":" https://drive.google.com/file/d/1TYWzEFA5FHPRS-zRneEe09UwUQ6glLEV/view?usp=drive_link",
+         "22881A1220":" https://drive.google.com/file/d/1PwNS2SKpatrFpCt58gSbSIGtL1DwufYO/view?usp=drive_link",
+         "22881A1221":" https://drive.google.com/file/d/18wX7oUuRFPqY4ZKo9TvT8A2li8nH3mG6/view?usp=drive_link",
+         "22881A1222":" https://drive.google.com/file/d/1oRxBuowY9y9Rft8y3IjA6BXBOGbk9Tvw/view?usp=drive_link",
+         "22881A1223":" https://drive.google.com/file/d/1f0AYCeoGeX5r1VFZeRsvjUn8en8tb25b/view?usp=drive_link",
+         "22881A1224":" https://drive.google.com/file/d/17Ms9faYjUKVji3-r-5r8caWiTTDAIbua/view?usp=drive_link",
+         "22881A1225":" https://drive.google.com/file/d/1HxBwBplF1WYVX06FD-d_du2iHwlILzib/view?usp=drive_link",
+         "22881A1226":" https://drive.google.com/file/d/1PT0Wr0dUs0irWQaiSbye8yzNxvpufsr_/view?usp=drive_link",
+         "22881A1227":" https://drive.google.com/file/d/1ubGi80nQfQSBjruf64X77cgbvL5rJoXd/view?usp=drive_link",
+         "22881A1228":" https://drive.google.com/file/d/1m1ZWxNQf9KYCghlg2r_Yqc5BJEq4R8nB/view?usp=drive_link",
+         "22881A1229":" https://drive.google.com/file/d/1hlr7IUN-ythXU8Jydc9p_Mo8z6XiyYu2/view?usp=drive_link",
+         "22881A1230":" https://drive.google.com/file/d/1SqAHygQJuxgKF1e-ed3Tc3xFxG7i3bI3/view?usp=drive_link",
+         "22881A1231":" https://drive.google.com/file/d/1NgWc1tLAhJ8QFX_BUI_T-wdTPsI-xVlI/view?usp=drive_link",
+         "22881A1232":" https://drive.google.com/file/d/1rurNpK-W_JLHpvmlgiG6OMOvjgxSc-Iz/view?usp=drive_link",
+         "22881A1233":" https://drive.google.com/file/d/1Y0ksoJ0YsjEci-Z92WtodwupZOYLjbUP/view?usp=drive_link",
+         "22881A1234":" https://drive.google.com/file/d/1uj2Q5Zm5C2Z_pmFB58uk65wdPCTUgdFp/view?usp=drive_link",
+         "22881A1235":" https://drive.google.com/file/d/1e9URCs0057Qg5-UcMo69PVLA16mPHMrG/view?usp=drive_link",
+         "22881A1236":" https://drive.google.com/file/d/14SZbYECLC70_iEVM3ZIFQ1tV0-bL8Y0r/view?usp=drive_link",
+         "22881A1237":" https://drive.google.com/file/d/1_NkrK_ySJTLdWQo5_WLQRYAtyVxCAjLJ/view?usp=drive_link",
+         "22881A1238":" https://drive.google.com/file/d/1nafSWM_3hB2O6B1u-4N4rkT4c3AeSTSU/view?usp=drive_link",
+         "22881A1239":" https://drive.google.com/file/d/1mapAD8DVNcsSu-j8OuYmWgxx9TXxRMBC/view?usp=drive_link",
+         "22881A1240":" https://drive.google.com/file/d/1LVD759IZgPTL0nseY9qwQk8DiBGCXZ84/view?usp=drive_link",
+         "22881A1241":" https://drive.google.com/file/d/1PnlE7Fi8mBJNQ8I1wXP_NJNeE_8qJkbD/view?usp=drive_link",
+         "22881A1242":" https://drive.google.com/file/d/1-qd-eflY7jQ00MkVvlNd21e-lhgt46Vu/view?usp=drive_link",
+         "22881A1243":" https://drive.google.com/file/d/1v8BIWZqBiEf9hltvNEvGiCFT_RnJS4Xz/view?usp=drive_link",
+         "22881A1244":" https://drive.google.com/file/d/1pEyhEy09EENq3V6Bdb47qtDQ6iAhMyHZ/view?usp=drive_link",
+         "22881A1245":" https://drive.google.com/file/d/1_DBwsog4Tu_hLEx3BI2LhmXY-9LFwz4D/view?usp=drive_link",
+         "22881A1246":" https://drive.google.com/file/d/1Sp3lFZIE314x0ffxfn80_q-LXqCoH2ZQ/view?usp=drive_link",
+         "22881A1247":" https://drive.google.com/file/d/1EnzrK4Ysw0QlUk5SM8nst5ZLZ8QGrB61/view?usp=drive_link",
+         "22881A1248":" https://drive.google.com/file/d/1A63cfDrJC70QQTkCrnIg8eqUFSVzN0mp/view?usp=drive_link",
+         "22881A1249":" https://drive.google.com/file/d/1SU9NTjRumiEz-SBry5cWegQQF5EFQMCH/view?usp=drive_link",
+         "22881A1250":" https://drive.google.com/file/d/1RSkB2ubURvdwJwUQg1Fe5n7DdbaR77Fj/view?usp=drive_link",
+         "22881A1251":" https://drive.google.com/file/d/1AQpI80l1dj_kpvXpQgjwlLzW0htEFGmi/view?usp=drive_link",
+         "22881A1252":" https://drive.google.com/file/d/1xuAtl08aWTyQ4J0aZVNup6Bj-MQ0Dlkw/view?usp=drive_link",
+         "22881A1253":" https://drive.google.com/file/d/1jqrKnCrDmQCkzZJbsWS_CPhuPvtOzKP-/view?usp=drive_link",
+         "22881A1254":" https://drive.google.com/file/d/1zeXcXXhTAotOjnihjuvZ45b2mFABR9rV/view?usp=drive_link",
+         "22881A1255":" https://drive.google.com/file/d/1LdbSsmgfDHwjDmfY1MHxWd6F62wm5n4l/view?usp=drive_link",
+         "22881A1256":" https://drive.google.com/file/d/1SmYIfGDXkvHeudwXyhKVurZAw821Hl5w/view?usp=drive_link",
+         "22881A1257":" https://drive.google.com/file/d/1S79uzTYW7Jn3oqBLqN3vFA693H-C4OEF/view?usp=drive_link",
+         "22881A1258":" https://drive.google.com/file/d/1dDBb3RYtLZeT5L8FdrTx2Xn3oF4i12F5/view?usp=drive_link",
+         "22881A1259":" https://drive.google.com/file/d/1hTNKPTGt8Aja5YyWXT10vn3Wza49SZnV/view?usp=drive_link",
+         "22881A1260":" https://drive.google.com/file/d/1CANIqPj8P0Vkq2kormGH50BY9tCX7J3Y/view?usp=drive_link",
+         "22881A1261":" https://drive.google.com/file/d/1t3YF4aR7b_8M_eMF6OLqTJBURo3zNiKq/view?usp=drive_link",
+         "22881A1262":" https://drive.google.com/file/d/1OyNj2yoF6ezYUbnlOqF0Rb-oaHJZYCZ6/view?usp=drive_link",
+         "22881A1263":" https://drive.google.com/file/d/1souShxYwrK6dKxcvKxk6Lwah3nS6JueJ/view?usp=drive_link",
+         "22881A1264":" https://drive.google.com/file/d/1ZX09OR92jm_kXeIw9pJQ__M5W1nY2gsD/view?usp=drive_link",
+         "22881A1265":" https://drive.google.com/file/d/1wmWaHAPsmyoZFloZYE3Y3qObNGTGkOuU/view?usp=drive_link",
+         "22881A1266":" https://drive.google.com/file/d/1hu3Joj9MouU-sfSUudMfjDrlwvDT7B_K/view?usp=drive_link",
+         "22881A1267":" https://drive.google.com/file/d/1jg1k8HBLRvLEXFgDVWBh_phGJ16NZaw4/view?usp=drive_link",
+         "22881A1268":" https://drive.google.com/file/d/1JoPxAyeT2nd-onjxsxBfoJUME0z1jsZn/view?usp=drive_link",
+         "22881A1269":" https://drive.google.com/file/d/1azE0m47FJXzXO-vzbcNnIYX9oyiq6xpr/view?usp=drive_link",
+         "22881A1270":" https://drive.google.com/file/d/1cARy8ZmEyl5HAOZGEhuGPLRQN9U84m2O/view?usp=drive_link",
+         "22881A1271":" https://drive.google.com/file/d/1NESnX5jjJ1foxiZxTMMcOc1AQk2WCvFF/view?usp=drive_link",
+         "22881A1272":" https://drive.google.com/file/d/1rpEzQdtOEmFH1Yab4feNOrlyXVcOCzWU/view?usp=drive_link",
+         "22881A1273":" https://drive.google.com/file/d/1_eklwD5tvmVlTD8-sIYBp0casc5UkVj6/view?usp=drive_link",
+         "22881A1274":" https://drive.google.com/file/d/1qvl5i8yHxMjLiwxAnb8XydOZXq4CZHmh/view?usp=drive_link",
+         "22881A1275":" https://drive.google.com/file/d/1rSwUhtRv0r9pEwDDsTKD54OYTaHtN-aX/view?usp=drive_link",
+         "22881A1276":" https://drive.google.com/file/d/1AuGZYiVAyKOgjneYTMyfoSY8_0ymDEk4/view?usp=drive_link",
+         "22881A1277":" https://drive.google.com/file/d/1KV-KrR6mblH5cpG4Pz2PZuBUv9HdZy3n/view?usp=drive_link",
+         "22881A1278":" https://drive.google.com/file/d/1ZyV1XAcZhdsi-19IZraMBcLfKw6wjIrV/view?usp=drive_link",
+         "22881A1279":" https://drive.google.com/file/d/1G7UqUmtiVZ2NmICdwKHmxvbAAS9igmV0/view?usp=drive_link",
+         "22881A1280":" https://drive.google.com/file/d/18VfDyOTkiGrOzkMkfWHArMZMBz8IhKu4/view?usp=drive_link",
+         "22881A1281":" https://drive.google.com/file/d/1osLcscxTULFU7CrQw3q0Bm0iWOG283RK/view?usp=drive_link",
+         "22881A1282":" https://drive.google.com/file/d/1irzdG0ypXeBV6maq2jIO8qjiF7cxrT6W/view?usp=drive_link",
+         "22881A1283":" https://drive.google.com/file/d/1cQ2kAwnUT2Y3kPk5wID60qPO6HymktwY/view?usp=drive_link",
+         "22881A1284":" https://drive.google.com/file/d/1KjaynWzeJSbOd1zg-vvI8_oHXTOHdAZk/view?usp=drive_link",
+         "22881A1285":" https://drive.google.com/file/d/1UTsDvqbbZd8ShfK-AupA42H37pR2cIPP/view?usp=drive_link",
+         "22881A1286":" https://drive.google.com/file/d/1voJUtFbEw10Bxf2DmfDcaYHzjS64jN9P/view?usp=drive_link",
+         "22881A1287":" https://drive.google.com/file/d/1oIB_A8Nn-6CONmuX0Ri2MjVNFZWyvPfa/view?usp=drive_link",
+         "22881A1288":" https://drive.google.com/file/d/1Me0ptYhh55BkZp9WX5so9EZfX21-qpFm/view?usp=drive_link",
+         "22881A1289":" https://drive.google.com/file/d/1s30eY2K5ukIrEgUUfAkdkULexQ14Jcb6/view?usp=drive_link",
+         "22881A1290":" https://drive.google.com/file/d/12YuZLghhdZD8JODGYC6omYcgLk8gLUAb/view?usp=drive_link",
+         "22881A1291":" https://drive.google.com/file/d/1aBvwm5E0ZWgb5O3DAtF9YxgfNYy2JyFh/view?usp=drive_link",
+         "22881A1292":" https://drive.google.com/file/d/1kNE3uuDEHZUsCzLWbfFVHQplx3J2w4Oq/view?usp=drive_link",
+         "22881A1293":" https://drive.google.com/file/d/1_dYEUzAZddHOwPJzxvjZlIeqWVODTGfl/view?usp=drive_link",
+         "22881A1294":" https://drive.google.com/file/d/1RPfO3rJw8yiul_lAs_-l-gWqBKO8-YVE/view?usp=drive_link",
+         "22881A1295":" https://drive.google.com/file/d/1InsKKqO5mqYk5PB2xcGCe7ir1GWdRkR4/view?usp=drive_link",
+         "22881A1296":" https://drive.google.com/file/d/1G9uTMIHu5EdAbJyY0LKUkF8si-B9HnaC/view?usp=drive_link",
+         "22881A1297":" https://drive.google.com/file/d/1lTXUE8aggNxzDDnVcC1lz6bn7jpIjkmW/view?usp=drive_link",
+         "22881A1298":" https://drive.google.com/file/d/1H1d7c3WobJofGWill3nXyF-db36qBdLO/view?usp=drive_link",
+         "22881A1299":" https://drive.google.com/file/d/1746On-wLGdJtCGEQ0KNN8cniDzRFQJ4u/view?usp=drive_link",
+         "22881A12A0":"https://drive.google.com/file/d/1tpIVFZxrYMyYQYw5lyTOFiG7jNPrnO4z/view?usp=drive_link",
+         "22881A12A1":" https://drive.google.com/file/d/1rjwf0DBZxZUI-hPzw6H4_mC_Pm4xowva/view?usp=drive_link",
+         "22881A12A2":" https://drive.google.com/file/d/1GfZ17lx9Om0SwUc70rsZZPvOoF5tW5Ou/view?usp=drive_link",
+         "22881A12A3":" https://drive.google.com/file/d/1p1ToOLeqToE0pFSQ9KKg9KIl_Dx529FR/view?usp=drive_link",
+         "22881A12A4":" https://drive.google.com/file/d/1nRdfyuX4eMWotBdWm9Rh6BeIXDk-JoNX/view?usp=drive_link",
+         "22881A12A5":" https://drive.google.com/file/d/17XLFSaWC5zq2dD9PUuLGc7YkOYnLu83D/view?usp=drive_link",
+         "22881A12A6":" https://drive.google.com/file/d/1Ojm1C3WGF2d5-ND9vMHzfYmfhbRMHzSB/view?usp=drive_link",
+         "22881A12A7":" https://drive.google.com/file/d/1XyM_izJB03XrFZFZorTNFpuLv3WdClvK/view?usp=drive_link",
+         "22881A12A8":" https://drive.google.com/file/d/1Au6e6MpbSOwEdw9IJN3TMqeYuGi1_fHz/view?usp=drive_link",
+         "22881A12A9":" https://drive.google.com/file/d/1hN1oEBA5yTVwEsdijsv_WxgVtUWidVQG/view?usp=drive_link",
+         "22881A12B0":" https://drive.google.com/file/d/10ptOKjepNNFr-54-2dMbDz3AerUxnaOJ/view?usp=drive_link",
+         "22881A12B1":" https://drive.google.com/file/d/1dJBGXa2dIkzerMu_8BLWZFwxMRq5YxfT/view?usp=drive_link",
+         "22881A12B2":" https://drive.google.com/file/d/1TE_dhWx76uLq35QDQX-EjI0iE6rn9j7Z/view?usp=drive_link",
+         "22881A12B3 ":" https://drive.google.com/file/d/1hdB0QTOWZrWLvWJjGaTA8VNR4ovbVnhz/view?usp=drive_link",
+         "22881A12B4":" https://drive.google.com/file/d/1YxBA8D0T2idJjWdP1ICUVKvwIFsAR6TJ/view?usp=drive_link",
+         "22881A12B5":" https://drive.google.com/file/d/1VvApmfRlJ9EH37C6jpGQjNNp72y7mX1l/view?usp=drive_link",
+         "22881A12B6":" https://drive.google.com/file/d/1AKvzaeRFuwmOXYFy6JNswoVxB5STG13G/view?usp=drive_link",
+         "22881A12B7":" https://drive.google.com/file/d/1Otox4S4ehuviW0XpSuNW5Qm_qEvXqcVs/view?usp=drive_link",
+         "22881A12B8":" https://drive.google.com/file/d/1SF5hzh9qIfk-eso8EfT1zwo2boIOY4lh/view?usp=drive_link",
+         "22881A12B9":" https://drive.google.com/file/d/1Qw46cKz4-zz5_L4MSoRXzpM_yQfOCJIK/view?usp=drive_link",
+         "22881A12C0":" https://drive.google.com/file/d/1CeGGqR-rmXAFIZIYusWrLQE80gWqCmY9/view?usp=drive_link",
+         "22881A12C1":" https://drive.google.com/file/d/1C640dTrj4spM1ifSRFjQ_ChvMB1jdi44/view?usp=drive_link",
+         "22881A12C2":" https://drive.google.com/file/d/1dW9epsmSS2XniQtSjnzN8tcQ_gV1eOkX/view?usp=drive_link",
+         "22881A12C3":" https://drive.google.com/file/d/1j2OEXSbZ01GY7vYHmLRYQzEzmN5fBTcA/view?usp=drive_link",
+         "22881A12C4":" https://drive.google.com/file/d/1p1hWVGYAq8LTc_n6rSHM2Ci3iYHnhW61/view?usp=drive_link",
+         "22881A12C5":" https://drive.google.com/file/d/1jISbcZabm_fFTj3OkCY2h2-7LG0XEUsu/view?usp=drive_link",
+         "22881A12C6":" https://drive.google.com/file/d/1dsz1x5mhXVn_zVp8fR5jOZl9vQlE5Yz5/view?usp=drive_link",
+         "22881A12C7":" https://drive.google.com/file/d/1iKNyYMEuuknO7IIgkbPIbK0D4p8SG9BX/view?usp=drive_link",
+         "22881A12C8":" https://drive.google.com/file/d/1DWO56WbcIWolTdWviyHABqgR9y5gbYu-/view?usp=drive_link",
+         "22881A12C9":" https://drive.google.com/file/d/1GUASbsqB0Zvm0ATqkJrEO2j2xIoorCbR/view?usp=drive_link",
+         "22881A12D0":" https://drive.google.com/file/d/1vgol5m-M6leS5uO8ovulijYmp0NJaJDu/view?usp=drive_link",
+         "22881A12D1":" https://drive.google.com/file/d/1X5voM74jclyJ__VtH6L6YUrFvhU_lbO5/view?usp=drive_link",
+         "22881A12D2":" https://drive.google.com/file/d/185ugpjiwwm0E7X1v6eVyBfkyz5cXG08m/view?usp=drive_link",
+         "22881A12D3":" https://drive.google.com/file/d/1Sr4CjaPc9O-DMLzuEPFtN3bsh8Kk7m_4/view?usp=drive_link",
+         "22881A12D4":" https://drive.google.com/file/d/1U7V5tgYc97rsKdc7beO9futW2mlQQlEu/view?usp=drive_link",
+         "22881A12D5":" https://drive.google.com/file/d/1vgTk1RhQTG9iLPzZ5lKf301LEpOMe_Lr/view?usp=drive_link",
+         "22881A12D6":" https://drive.google.com/file/d/1neyhjHSbJ4eFZO0DMC_sY_wV2ubHe9Ak/view?usp=drive_link",
+         "22881A12D7":" https://drive.google.com/file/d/1PdhedQSQKe30jSR_852-7GkrYRk45iKj/view?usp=drive_link",
+         "22881A12D8":" https://drive.google.com/file/d/1HBm9VWe5_m51a6hCId1qIhXnV2a3I5XP/view?usp=drive_link",
+         "22881A12D9":" https://drive.google.com/file/d/1Smqbh20bpUbXfDpmQgDw1t6O6-siPQMC/view?usp=drive_link",
+         "22881A12E0":" https://drive.google.com/file/d/1Hhmh6sakbiJMHsCLnW1kFK9RqsICRhrD/view?usp=drive_link",
+         "22881A12E1":" https://drive.google.com/file/d/1CJaPKeXOb_HWsXqYqr7Oxr7ZHjyoFJyX/view?usp=drive_link",
+         "22881A12E2":" https://drive.google.com/file/d/1uhhdvU1cn_Wr6AilqkQBQvACmewkD9_l/view?usp=drive_link",
+         "22881A12E3":" https://drive.google.com/file/d/1da4XHN1RU99eYSrn2q02awSADEX_dvUb/view?usp=drive_link",
+         "22881A12E4":" https://drive.google.com/file/d/1-XFJFwDf2N3jMTFmxfQgpVfwgDidUvgi/view?usp=drive_link",
+         "22881A12E5":" https://drive.google.com/file/d/1aCJHENBCzUXHyCU-FLYejZsAdfSezUKU/view?usp=drive_link",
+         "22881A12E6":" https://drive.google.com/file/d/10bCw8evlrBKYCZMQNLdcxgs44-yc0HmJ/view?usp=drive_link",
+         "22881A12E7":" https://drive.google.com/file/d/1Iv_zYU1k5LFxJiwMKVVO5iRipi_ab5_l/view?usp=drive_link",
+         "22881A12E8":" https://drive.google.com/file/d/14wUEeHhapI535QOB8b8f3lU_OjLtcp36/view?usp=drive_link",
+         "22881A12E9":" https://drive.google.com/file/d/1ppMlPAbRb5VaWkTJXLV3qSF3pOukTqr8/view?usp=drive_link",
+         "22881A12F0":" https://drive.google.com/file/d/1D3T7ON5BSIjdqrYkMPG6TwutA1zUVDbM/view?usp=drive_link",
+         "22881A12F1":" https://drive.google.com/file/d/1QBmKFFj21Elx9PKv7We_P4-uOB8CKMBO/view?usp=drive_link",
+         "22881A12F2":" https://drive.google.com/file/d/1yc_X9JnVNTwuSwn52DlZ44tim9jStnaJ/view?usp=drive_link",
+         "22881A12F3":" https://drive.google.com/file/d/1SjS2OmBgPKvaufiJsVEHRXHwfB3QO14R/view?usp=drive_link",
+         "22881A12F4":" https://drive.google.com/file/d/1zqdKxH7StZ19WE-HNlAmuPYvemYWYRjv/view?usp=drive_link",
+         "22881A12F5":" https://drive.google.com/file/d/1p1ostrkZJwSqhAFhuZJUwmYuGEfw5ORh/view?usp=drive_link",
+         "22881A12F6":" https://drive.google.com/file/d/1RwMRNKLBuzLYzXfZG4EPMr81GqOYMw-O/view?usp=drive_link",
+         "22881A12F7":" https://drive.google.com/file/d/1JRyAoYdYhZTl9CFw-ypOa2pouBax-WNJ/view?usp=drive_link",
+         "22881A12F8":" https://drive.google.com/file/d/1IaPiE-E8iSaCdkV-VTfHMEROmzgg1Wqk/view?usp=drive_link",
+         "22881A12F9":" https://drive.google.com/file/d/1qCdqHlNzxCBixRxtVZLkBBx5ZTnT_C_W/view?usp=drive_link",
+         "22881A12G0":" https://drive.google.com/file/d/1qsRSVCNy5v277Ay1xct2k3IeClihaXDL/view?usp=drive_link",
+         "22881A12G1":" https://drive.google.com/file/d/1SqQZd6hIbL6F165d41PJm5eYeF2SBKCQ/view?usp=drive_link",
+         "22881A12G2":" https://drive.google.com/file/d/1yL2X6IAdM2SB8v18qUqMVfpo28B9JZu3/view?usp=drive_link",
+         "22881A12G3":" https://drive.google.com/file/d/1zrD5T1bqqY4cObp8fp0i1IWluyOs7Qnk/view?usp=drive_link",
+         "22881A12G4":" https://drive.google.com/file/d/1llSUvwa6h9IiginL0dgKu6lqAX7cy5ZU/view?usp=drive_link",
+         "22881A12G5":" https://drive.google.com/file/d/1VlF4aMjrJJublbOU4LpZb2OUAloMqLVK/view?usp=drive_link",
+         "22881A12G6":" https://drive.google.com/file/d/1Pgq389FAXIJhfyZefwK76lwjgSr3EOjV/view?usp=drive_link",
+         "22881A12G7":" https://drive.google.com/file/d/1Sz2s1oEUWFhrOPgxxCwk3kNZ9uoYCh_X/view?usp=drive_link",
+         "22881A12G8":" https://drive.google.com/file/d/106GOfmC_8xn-rf-IZRqj7Od2KeRTBNIW/view?usp=drive_link",
+         "22881A12G9":" https://drive.google.com/file/d/1D2ndAcrzc-r_JCtZ1k_-7H7Muv77g8-q/view?usp=drive_link",
+         "22881A12H0":" https://drive.google.com/file/d/1lSqwA9SfXUm8MuhiPojiLsK51gVOiy9k/view?usp=drive_link",
+         "22881A12H1":" https://drive.google.com/file/d/1yfkLg8zGknETkKo4K4btfhHU2Mq8T2kG/view?usp=drive_link",
+         "22881A12H2":" https://drive.google.com/file/d/12sK9FsmJvt6hJOLBo8RZ--us97mRgNuh/view?usp=drive_link",
+         "22881A12H3":" https://drive.google.com/file/d/1o364hnqXTOoV70zFHhHYsIMEeMZ9pylZ/view?usp=drive_link",
+         "22881A12H4":" https://drive.google.com/file/d/1BiRmnXmI8lLYVFA9pvVUfJy8iFdD9rs_/view?usp=drive_link",
+         "22881A12H5":" https://drive.google.com/file/d/1OGFJJ443eVaw1G3EprgjSUbpfHsAd2R3/view?usp=drive_link",
+         "22881A12H6":" https://drive.google.com/file/d/1tnXdcEjc0I4ZLLtXlukkYE_35bSqppK8/view?usp=drive_link",
+         "22881A12H7":" https://drive.google.com/file/d/1l27hp0QkFvX3wBf6XywMRJ7ptiSk8kNL/view?usp=drive_link",
+         "22881A12H8":" https://drive.google.com/file/d/1v2Mpyfu4TlMsXUrX3ClzxjrZ35NiJ1vB/view?usp=drive_link",
+         "22881A12H9":" https://drive.google.com/file/d/1hnCkCIIwHUv51ScEsraxdmutilkIDjkS/view?usp=drive_link",
+         "22881A12J0":" https://drive.google.com/file/d/1IgReb_BCn5K64hrN67PFX2hbKJIiuiTd/view?usp=drive_link",
+         "22881A12J1":" https://drive.google.com/file/d/1dJK5orKw4QjIGM3i0KM6_aODR8l9CJnA/view?usp=drive_link",
+         "22881A12J2":" https://drive.google.com/file/d/19YAhQlom_e5nGTDhyS0fAiE_MEcwt67w/view?usp=drive_link",
+         "22881A12J3":" https://drive.google.com/file/d/1RBfy2U36GC8fe5FugL5rFqeEg_uqyiqA/view?usp=drive_link",
+         "22881A12J4":" https://drive.google.com/file/d/1QwROm7MUNRjCWODuJ_TTdmAxEhax9f2i/view?usp=drive_link",
+         "22881A12J5":" https://drive.google.com/file/d/1RkmhB04Fr_fpb5XsFAy-3e_4tHMyWGX7/view?usp=drive_link",
+         "22881A12J6":" https://drive.google.com/file/d/1_ZrImFte1OBCwTr-4g1wSKZ0Iw-glD7A/view?usp=drive_link",
+         "22881A12J7":" https://drive.google.com/file/d/106xdGs5CBziMyUrQJ6NXk9tL-MVBRGYR/view?usp=drive_link",
+         "22881A12J8":" https://drive.google.com/file/d/1JNiUUBoRSZNDIzSJ4wlYcGmT3e5KlAKy/view?usp=drive_link",
+         "22881A12J9":" https://drive.google.com/file/d/1wyCYQtZrwjhN_y96_YDbOhJ0vPQhX0cm/view?usp=drive_link",
+         "22881A12K0":" https://drive.google.com/file/d/1TLythyEjbfUboKu58sYBQl6AORRfAv1P/view?usp=drive_link",
+         "22881A12K1":" https://drive.google.com/file/d/1KUxfhxND9l0hV2AQ_FeGijCwVQUez42C/view?usp=drive_link"};
+         function displayImage(studentId) {
+            const sid = idSidPairs[studentId];
+            const imageUrl = `https://student.vardhaman.org/handler/getImage.ashx?SID=${sid}`;
+            const photoContainer = document.getElementById("photo-container");
+            photoContainer.innerHTML = `<img src="${imageUrl}" alt="Student Photo"><br><br>`;
+          }
+          function searchStudent(studentId) {
+            const table = document.getElementById('dataTable');
+            const rows = table.getElementsByTagName('tr');
+            const studentDetails = document.getElementById('studentDetails');
+            studentDetails.innerHTML = '';
+            for (let i = 0; i < rows.length; i++) {
+              const cells = rows[i].getElementsByTagName('td');
+              if (cells.length > 0 && cells[0].textContent === studentId) {
+                let detailsHTML = '<h3>Student Details</h3><table style="margin: 0 auto; border: 1px solid #000; border-collapse: collapse;">';
+                for (let j = 0; j < cells.length; j++) {
+                  detailsHTML += `
+                    <tr>
+                      <td style="padding: 8px; border: 1px solid #000;"><strong>${rows[0].getElementsByTagName('th')[j].textContent}</strong></td>
+                      <td style="padding: 8px; border: 1px solid #000;">${cells[j].textContent}</td>
+                    </tr>`;
+                }
+                detailsHTML += '</table>';
+                studentDetails.innerHTML = detailsHTML;
+                return;
+              }
+            }
+            studentDetails.innerHTML = `<p>Data for student with ID ${studentId} is still being processed.</p>`;
+          }
+          function displayStudentDetails() {
+            const studentIdInput = document.getElementById("studentId");
+            const studentId = studentIdInput.value.trim();
+         
+            if (idSidPairs.hasOwnProperty(studentId)) {
+              searchStudent(studentId);
+            } else {
+              alert("Invalid Student ID. Please enter a valid ID.");
+            }
+          }
+          function displayResults(studentId) {
+            if (studentResultLinks.hasOwnProperty(studentId)) {
+              const driveLink = studentResultLinks[studentId];
+              window.open(driveLink, "_blank");
+            } else {
+              alert("Results link not available for this student.");
+            }
+          }
+          function clearScreen() {
+              document.getElementById("photo-container").innerHTML = "";
+              document.getElementById("studentDetails").innerHTML = "";
+            }
+      </script>
+   </body>
+</html>
